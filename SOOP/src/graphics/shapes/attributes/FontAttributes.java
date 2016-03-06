@@ -1,5 +1,6 @@
 package graphics.shapes.attributes;
 
-public class FontAttributes extends Attributes {
+public class FontAttributes extends Attributes
+{
 
 }

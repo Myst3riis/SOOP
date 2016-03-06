@@ -4,21 +4,57 @@ import graphics.shapes.attributes.ColorAttributes;
 import graphics.shapes.attributes.SelectionAttributes;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 
-public class SCircle extends Shape {
+public class SCircle extends Shape
+{
 
-	public SCircle(Point point, int i) {
+	private int radius;
+	private Point loc;
+
+	public SCircle(Point point, int i)
+	{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void addAttributes(ColorAttributes colorAttributes) {
+	public void addAttributes(ColorAttributes colorAttributes)
+	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	public void addAttributes(SelectionAttributes selectionAttributes) {
+	public void addAttributes(SelectionAttributes selectionAttributes)
+	{
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public Point getLoc()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setLoc(Point pt)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Rectangle getBounds()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void accept(ShapeVisitor sv)
+	{
+		// TODO Auto-generated method stub
+
 	}
 
 }

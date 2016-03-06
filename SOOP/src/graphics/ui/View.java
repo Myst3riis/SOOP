@@ -2,7 +2,6 @@ package graphics.ui;
 
 import javax.swing.JPanel;
 
-
 public abstract class View extends JPanel
 {
 	private Object model;
@@ -17,27 +16,25 @@ public abstract class View extends JPanel
 		this.addMouseMotionListener(this.controller);
 		this.addKeyListener(this.controller);
 	}
-	
+
 	public void setModel(Object model)
 	{
 		this.model = model;
 		this.controller.setModel(model);
 	}
-	
+
 	public Object getModel()
 	{
 		return this.model;
 	}
-	
+
 	public Controller defaultController(Object model)
 	{
 		return new Controller(model);
 	}
-	
+
 	final public Controller getController()
 	{
 		return this.controller;
 	}
 }
-
-
