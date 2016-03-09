@@ -31,8 +31,8 @@ public class SRectangle extends Shape
 	@Override
 	public void setLoc(Point pt)
 	{
-		int dx = pt.x-this.rect.x;
-		int dy = pt.y-this.rect.y;
+		int dx = pt.x - this.rect.x;
+		int dy = pt.y - this.rect.y;
 	}
 	
 	@Override 
