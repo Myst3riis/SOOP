@@ -1,7 +1,8 @@
 package graphics.shapes;
 
-import graphics.shapes.attributes.ColorAttributes;
-import graphics.shapes.attributes.SelectionAttributes;
+//import graphics.shapes.attributes.Attributes;
+//import graphics.shapes.attributes.ColorAttributes;
+//import graphics.shapes.attributes.SelectionAttributes;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -11,44 +12,42 @@ public class SRectangle extends Shape
 
 	private Rectangle rect;
 
-	public SRectangle(Point point, int i, int j)
+	public SRectangle(Point point, int width, int height)
 	{
-		// TODO Auto-generated constructor stub
+		this.rect = new Rectangle(point.x,point.y,width, height);
 	}
 
-	public void addAttributes(ColorAttributes colorAttributes)
-	{
-		// TODO Auto-generated method stub
-
-	}
-
-	public void addAttributes(SelectionAttributes selectionAttributes)
-	{
-		// TODO Auto-generated method stub
-
+	public Rectangle getRect(){
+				return this.getBounds();
 	}
 
 	@Override
 	public Point getLoc()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Point p = new Point(this.rect.x, this.rect.y) ;
+		return p;
 	}
 
 	@Override
 	public void setLoc(Point pt)
 	{
-		// TODO Auto-generated method stub
-
+		int dx = pt.x-this.rect.x;
+		int dy = pt.y-this.rect.y;
+	}
+	
+	@Override 
+	public void translate(int dx, int dy)
+	{
+		this.rect.translate(dx, dy);
 	}
 
 	@Override
 	public Rectangle getBounds()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Rectangle(this.rect);
 	}
-
+	
+	
 	@Override
 	public void accept(ShapeVisitor sv)
 	{
