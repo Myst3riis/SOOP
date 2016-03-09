@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 public class FontAttributes extends Attributes
 {
+	public static final String ID = "font";
 	public Font font;
 	public Color fontColor;
 

@@ -14,28 +14,27 @@ public class SRectangle extends Shape
 
 	public SRectangle(Point point, int width, int height)
 	{
-		this.rect = new Rectangle(point.x,point.y,width, height);
+		this.rect = new Rectangle(point.x, point.y, width, height);
 	}
 
-	public Rectangle getRect(){
-				return this.getBounds();
+	public Rectangle getRect()
+	{
+		return this.getBounds();
 	}
 
 	@Override
 	public Point getLoc()
 	{
-		Point p = new Point(this.rect.x, this.rect.y) ;
-		return p;
+		return this.rect.getLocation();
 	}
 
 	@Override
-	public void setLoc(Point pt)
+	public void setLoc(Point loc)
 	{
-		int dx = pt.x - this.rect.x;
-		int dy = pt.y - this.rect.y;
+		this.rect.setLocation(loc);
 	}
-	
-	@Override 
+
+	@Override
 	public void translate(int dx, int dy)
 	{
 		this.rect.translate(dx, dy);
@@ -46,8 +45,7 @@ public class SRectangle extends Shape
 	{
 		return new Rectangle(this.rect);
 	}
-	
-	
+
 	@Override
 	public void accept(ShapeVisitor sv)
 	{

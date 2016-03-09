@@ -1,8 +1,5 @@
 package graphics.shapes;
 
-import graphics.shapes.attributes.ColorAttributes;
-import graphics.shapes.attributes.SelectionAttributes;
-
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -37,7 +34,7 @@ public class SCircle extends Shape
 	@Override
 	public void setLoc(Point loc)
 	{
-		this.loc = loc;
+		this.loc.setLocation(loc);
 	}
 
 	@Override
@@ -55,8 +52,7 @@ public class SCircle extends Shape
 	@Override
 	public void translate(int dx, int dy)
 	{
-		this.loc.x = this.loc.x + dx;
-		this.loc.y = this.loc.y + dy;
+		this.loc.translate(dx, dy);
 	}
 
 }

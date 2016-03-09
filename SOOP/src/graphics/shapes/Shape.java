@@ -9,8 +9,6 @@ import graphics.shapes.attributes.Attributes;
 public abstract class Shape
 {
 
-	// Le diagramme des classes l'utilisation d'une HashMap ou une TreeMap au
-	// lieu d'une simple ArrayListe.
 	HashMap<String, Attributes> hmap = new HashMap<String, Attributes>();
 
 	public void addAttributes(Attributes attr)

@@ -8,11 +8,11 @@ import java.util.Iterator;
 public class SCollection extends Shape
 {
 
-	private ArrayList arr = new ArrayList();
+	private ArrayList<Shape> arr = new ArrayList<Shape>();
 
-	public Iterator iterator()
+	public Iterator<Shape> iterator()
 	{
-		return this.hmap.keySet().iterator();
+		return this.arr.iterator();
 	}
 
 	public void add(Shape shape)
@@ -23,21 +23,21 @@ public class SCollection extends Shape
 	@Override
 	public Point getLoc()
 	{
-		// TODO Auto-generated method stub
+		// Doit renvoyer le point en haut à gauche de la collection
 		return null;
 	}
 
 	@Override
-	public void setLoc(Point pt)
+	public void setLoc(Point loc)
 	{
-		// TODO Auto-generated method stub
-
+		for(Iterator<Shape> it = this.iterator(); it.hasNext();)
+			it.next().setLoc(loc);
 	}
 
 	@Override
 	public Rectangle getBounds()
 	{
-		// TODO Auto-generated method stub
+		// Doit renvoyer un rectangle englobant la collection
 		return null;
 	}
 
@@ -51,8 +51,8 @@ public class SCollection extends Shape
 	@Override
 	public void translate(int dx, int dy)
 	{
-		// TODO Auto-generated method stub
-
+		for(Iterator<Shape> it = this.iterator(); it.hasNext();)
+			it.next().translate(dx, dy);
 	}
 
 }
