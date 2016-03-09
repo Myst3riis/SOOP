@@ -20,20 +20,14 @@ public abstract class Shape
 
 	public Attributes getAttributes(String id)
 	{
-		if (hmap.containsKey(id))
-			return hmap.get(id);
-		else
-			return null;
+		return this.hmap.get(id);
 	}
 
 	public abstract Point getLoc();
 
 	public abstract void setLoc(Point pt);
 
-	public void translate(int dx, int dy)
-	{
-
-	}
+	public abstract void translate(int dx, int dy);
 
 	public abstract Rectangle getBounds();
 

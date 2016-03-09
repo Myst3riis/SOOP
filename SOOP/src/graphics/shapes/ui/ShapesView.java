@@ -1,22 +1,23 @@
 package graphics.shapes.ui;
 
-import java.awt.Dimension;
+import java.awt.Graphics;
 
-import graphics.shapes.SCollection;
+import graphics.shapes.SCircle;
+import graphics.shapes.attributes.ColorAttributes;
 import graphics.ui.View;
 
 public class ShapesView extends View
 {
 
-	public ShapesView(SCollection model)
+	public ShapesView(Object model)
 	{
-		// TODO Auto-generated constructor stub
+		super(model);
 	}
 
-	public void setPreferredSize(Dimension dimension)
+	public void paintComponent(Graphics g)
 	{
-		// TODO Auto-generated method stub
-
+		SCircle circ = (SCircle) this.getModel();
+		g.drawOval(circ.getLoc().x, circ.getLoc().y, 2 * circ.getRadius(), 2 * circ.getRadius());
 	}
 
 }

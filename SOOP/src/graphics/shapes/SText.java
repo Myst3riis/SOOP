@@ -64,4 +64,11 @@ public class SText extends Shape
 
 	}
 
+	@Override
+	public void translate(int dx, int dy)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
 }

@@ -1,11 +1,8 @@
 package graphics.shapes.attributes;
 
-public class Attributes
+public abstract class Attributes
 {
 
-	public String getID()
-	{
-		return this.toString();
-	}
+	public abstract String getID();
 
 }

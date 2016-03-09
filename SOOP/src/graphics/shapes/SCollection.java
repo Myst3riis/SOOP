@@ -2,40 +2,22 @@ package graphics.shapes;
 
 import java.awt.Point;
 import java.awt.Rectangle;
-
-import graphics.shapes.attributes.SelectionAttributes;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SCollection extends Shape
 {
 
-	public void addAttributes(SelectionAttributes selectionAttributes)
-	{
-		// TODO Auto-generated method stub
+	private ArrayList arr = new ArrayList();
 
+	public Iterator iterator()
+	{
+		return this.hmap.keySet().iterator();
 	}
 
-	public void add(SRectangle r)
+	public void add(Shape shape)
 	{
-		// TODO Auto-generated method stub
-
-	}
-
-	public void add(SCircle c)
-	{
-		// TODO Auto-generated method stub
-
-	}
-
-	public void add(SText t)
-	{
-		// TODO Auto-generated method stub
-
-	}
-
-	public void add(SCollection sc)
-	{
-		// TODO Auto-generated method stub
-
+		this.arr.add(shape);
 	}
 
 	@Override
@@ -61,6 +43,13 @@ public class SCollection extends Shape
 
 	@Override
 	public void accept(ShapeVisitor sv)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void translate(int dx, int dy)
 	{
 		// TODO Auto-generated method stub
 
