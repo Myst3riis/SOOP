@@ -12,49 +12,51 @@ public class SCircle extends Shape
 	private int radius;
 	private Point loc;
 
-	public SCircle(Point point, int i)
+	public SCircle(Point loc, int radius)
 	{
-		// TODO Auto-generated constructor stub
+		this.loc = loc;
+		this.radius = radius;
 	}
 
-	public void addAttributes(ColorAttributes colorAttributes)
+	public int getRadius()
 	{
-		// TODO Auto-generated method stub
-
+		return this.radius;
 	}
 
-	public void addAttributes(SelectionAttributes selectionAttributes)
+	public void setRadius(int radius)
 	{
-		// TODO Auto-generated method stub
-
+		this.radius = radius;
 	}
 
 	@Override
 	public Point getLoc()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.loc;
 	}
 
 	@Override
-	public void setLoc(Point pt)
+	public void setLoc(Point loc)
 	{
-		// TODO Auto-generated method stub
-
+		this.loc = loc;
 	}
 
 	@Override
 	public Rectangle getBounds()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Rectangle(this.loc.x, this.loc.y, 2 * this.radius, 2 * this.radius);
 	}
 
 	@Override
 	public void accept(ShapeVisitor sv)
 	{
-		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void translate(int dx, int dy)
+	{
+		this.loc.x = this.loc.x + dx;
+		this.loc.y = this.loc.y + dy;
 	}
 
 }
