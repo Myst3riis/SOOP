@@ -3,9 +3,11 @@ package graphics.shapes;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import graphics.shapes.attributes.FontAttributes;
+
+
 public class SText extends Shape
 {
-	
 	private String text;
 	private Point loc;
 
@@ -30,7 +32,8 @@ public class SText extends Shape
 	@Override
 	public Rectangle getBounds()
 	{
-		return null;
+		FontAttributes txt = (FontAttributes)getAttributes("font");
+		return txt.getBounds(this.text);
 	}
 	
 	public String getText() {
@@ -45,7 +48,6 @@ public class SText extends Shape
 	public void accept(ShapeVisitor sv)
 	{
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

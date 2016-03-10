@@ -3,23 +3,34 @@ package graphics.shapes.attributes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.font.FontRenderContext;
 
 public class FontAttributes extends Attributes
 {
 	public static final String ID = "font";
-	public Font font;
-	public Color fontColor;
+	private Font font;
+	private Color fontColor;
+	private FontRenderContext frc;
 
-	public Rectangle getBounds(String bounds)
+	public Rectangle getBounds(String text)
 	{
-		return null;
+		return (Rectangle)this.font.getStringBounds(text,frc);
 	}
 
+	public Font font()
+	{
+		return this.font;
+	}
+	
+	public Color fontColor()
+	{
+		return fontColor;
+	}
+	
 	@Override
 	public String getID()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.ID;
 	}
 
 }
