@@ -3,6 +3,7 @@ package graphics.shapes.ui;
 import java.awt.Graphics;
 
 import graphics.shapes.SCircle;
+import graphics.shapes.SText;
 import graphics.shapes.attributes.ColorAttributes;
 import graphics.ui.View;
 
@@ -16,8 +17,9 @@ public class ShapesView extends View
 
 	public void paintComponent(Graphics g)
 	{
-		SCircle circ = (SCircle) this.getModel();
-		g.drawOval(circ.getLoc().x, circ.getLoc().y, 2 * circ.getRadius(), 2 * circ.getRadius());
+		SText txt = (SText)this.getModel();
+		g.drawString(txt.getText(), txt.getLoc().x, txt.getLoc().y);
+		
 	}
 
 }
