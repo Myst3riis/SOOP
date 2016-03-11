@@ -55,7 +55,7 @@ public class Editor extends JFrame
 		
 		SText t = new SText(new Point(100, 100), "hello");
 		t.addAttributes(new ColorAttributes(true, true, Color.YELLOW, Color.BLUE));
-		t.addAttributes(new FontAttributes());
+		t.addAttributes(new FontAttributes(sview.getFont(), Color.BLACK, sview.getGraphics()));	// 11/03/2016 Pour l'instant je ne vois pas autre manière que de faire passer le graphics en paramètre
 		t.addAttributes(new SelectionAttributes());
 		this.model.add(t);
 		

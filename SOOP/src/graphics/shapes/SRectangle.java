@@ -49,8 +49,7 @@ public class SRectangle extends Shape
 	@Override
 	public void accept(ShapeVisitor sv)
 	{
-		// TODO Auto-generated method stub
-
+		sv.visitRectangle(this);
 	}
 
 }

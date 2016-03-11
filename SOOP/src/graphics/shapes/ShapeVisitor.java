@@ -7,7 +7,7 @@ public interface ShapeVisitor
 
 	public abstract void visitCircle(SCircle circ);
 
-	public abstract void visitText(SCircle text);
+	public abstract void visitText(SText text);
 
 	public abstract void visitCollection(SCollection coll);
 

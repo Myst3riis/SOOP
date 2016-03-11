@@ -27,13 +27,11 @@ public class ColorAttributes extends Attributes
 	public Color filledColor()
 	{
 		return this.filledColor;
-
 	}
 
 	public Color strokedColor()
 	{
 		return this.strokedColor;
-
 	}
 
 	@Override

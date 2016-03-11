@@ -1,10 +1,10 @@
 package graphics.shapes.ui;
 
 import java.awt.Graphics;
+import java.util.Iterator;
 
-import graphics.shapes.SCircle;
-import graphics.shapes.SText;
-import graphics.shapes.attributes.ColorAttributes;
+import graphics.shapes.SCollection;
+import graphics.shapes.Shape;
 import graphics.ui.View;
 
 public class ShapesView extends View
@@ -17,9 +17,10 @@ public class ShapesView extends View
 
 	public void paintComponent(Graphics g)
 	{
-		SText txt = (SText)this.getModel();
-		g.drawString(txt.getText(), txt.getLoc().x, txt.getLoc().y);
-		
+		ShapeDraftman sd = new ShapeDraftman(g);
+		SCollection sc = (SCollection) this.getModel();
+		for(Iterator<Shape> it = sc.iterator(); it.hasNext();)
+			it.next().accept(sd);
 	}
 
 }

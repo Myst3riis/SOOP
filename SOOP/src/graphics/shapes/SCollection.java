@@ -75,7 +75,8 @@ public class SCollection extends Shape
 	@Override
 	public void accept(ShapeVisitor sv)
 	{
-		// TODO Auto-generated method stub
+		for(Iterator<Shape> it = this.iterator(); it.hasNext();)
+			it.next().accept(sv);
 	}
 
 	@Override

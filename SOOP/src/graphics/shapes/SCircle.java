@@ -46,7 +46,7 @@ public class SCircle extends Shape
 	@Override
 	public void accept(ShapeVisitor sv)
 	{
-
+		sv.visitCircle(this);
 	}
 
 	@Override

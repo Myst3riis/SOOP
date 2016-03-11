@@ -47,7 +47,7 @@ public class SText extends Shape
 	@Override
 	public void accept(ShapeVisitor sv)
 	{
-		// TODO Auto-generated method stub
+		sv.visitText(this);
 	}
 
 	@Override
