@@ -1,15 +1,18 @@
 package graphics.shapes;
 
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import graphics.shapes.attributes.FontAttributes;
+
 public class SCollection extends Shape
 {
 	private int xmin;
 	private int ymin;
-	
+
 	private int xmax;
 	private int ymax;
 
@@ -31,21 +34,42 @@ public class SCollection extends Shape
 	public void add(Shape shape)
 	{
 		this.arr.add(shape);
-		
-		Point loc = shape.getLoc();
-		Rectangle rect = shape.getBounds();
-		
-		if(loc.x < this.xmin)
-			this.xmin = loc.x;
-		
-		if(loc.x + rect.width > this.xmax)
-			this.xmax = (loc.x + rect.width);
-		
-		if(loc.y < this.ymin)
-			this.ymin = loc.y;
-		
-		if(loc.y + rect.height > this.ymax)
-			this.ymax = (loc.y + rect.height);
+	}
+
+	public void updateBounds(Graphics g)
+	{
+		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
+		{
+
+			Shape tmp = it.next();
+
+			if (tmp.getClass().getName().equals("graphics.shapes.SText"))
+			{
+				FontAttributes fatt = (FontAttributes) ((SText) tmp).getAttributes("font");
+				fatt.setFontRenderContext(g);
+			}
+			else if (tmp.getClass().getName().equals("graphics.shapes.SCollection"))
+			{
+				((SCollection) tmp).updateBounds(g);
+			}
+			
+			Rectangle rect = tmp.getBounds();
+
+			Point loc = rect.getLocation();
+
+			if (loc.x < this.xmin)
+				this.xmin = loc.x;
+
+			if (loc.x + rect.width > this.xmax)
+				this.xmax = (loc.x + rect.width);
+
+			if (loc.y < this.ymin)
+				this.ymin = loc.y;
+
+			if (loc.y + rect.height > this.ymax)
+				this.ymax = (loc.y + rect.height);
+		}
+
 	}
 
 	@Override
@@ -61,7 +85,7 @@ public class SCollection extends Shape
 		this.ymax += (loc.y - this.ymin);
 		this.xmin = loc.x;
 		this.ymin = loc.y;
-		
+
 		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
 			it.next().setLoc(loc);
 	}
@@ -75,7 +99,7 @@ public class SCollection extends Shape
 	@Override
 	public void accept(ShapeVisitor sv)
 	{
-		for(Iterator<Shape> it = this.iterator(); it.hasNext();)
+		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
 			it.next().accept(sv);
 	}
 
@@ -86,7 +110,7 @@ public class SCollection extends Shape
 		this.ymin += dy;
 		this.xmax += dx;
 		this.ymax += dy;
-		
+
 		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
 			it.next().translate(dx, dy);
 	}
