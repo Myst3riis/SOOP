@@ -19,25 +19,72 @@ public class ShapeDraftman implements ShapeVisitor
 	public ShapeDraftman(Graphics g)
 	{
 		this.g = g;
+		this.DEFAULTCOLORATTRIBUTES = new ColorAttributes();
 	}
 
+	
 	@Override
 	public void visitRectangle(SRectangle rect)
 	{
-		g.drawRect(rect.getBounds().x, rect.getBounds().y, rect.getBounds().width, rect.getBounds().height);
+		ColorAttributes color = (ColorAttributes)rect.getAttributes("colors");
+		
+		if (color != null){
+			if(color.filled){
+				g.setColor(color.filledColor);
+				g.fillRect(rect.getBounds().x, rect.getBounds().y, rect.getBounds().width, rect.getBounds().height);
+			}
+			if(color.stroked){
+				g.setColor(color.strokedColor);
+				g.drawRect(rect.getBounds().x, rect.getBounds().y, rect.getBounds().width, rect.getBounds().height);
+			}
+		}else{
+			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
+			g.drawRect(rect.getBounds().x, rect.getBounds().y, rect.getBounds().width, rect.getBounds().height);
+		}
 	}
 
+	
 	@Override
 	public void visitCircle(SCircle circ)
 	{
-		g.drawOval(circ.getLoc().x, circ.getBounds().y, circ.getRadius(), circ.getRadius());
+		ColorAttributes color = (ColorAttributes)circ.getAttributes("colors");
+		
+		if (color != null){
+			if(color.filled){
+				g.setColor(color.filledColor);
+				g.fillOval(circ.getBounds().x, circ.getBounds().y, circ.getBounds().width, circ.getBounds().height);
+			}
+			if(color.stroked){
+				g.setColor(color.strokedColor);
+				g.drawOval(circ.getBounds().x, circ.getBounds().y, circ.getBounds().width, circ.getBounds().height);
+			}
+		}else{
+			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
+			g.drawOval(circ.getBounds().x, circ.getBounds().y, circ.getBounds().width, circ.getBounds().height);
+		}
 	}
-
+	
+	
 	@Override
 	public void visitText(SText text)
-	{
-		g.drawString(text.getText(), text.getLoc().x, text.getLoc().y);
+	{	
+		ColorAttributes color = (ColorAttributes)text.getAttributes("colors");
+		
+		if (color != null){
+			if(color.filled){
+				g.setColor(color.filledColor);
+				g.fillRect(text.getBounds().x, text.getBounds().y, text.getBounds().width, text.getBounds().height);
+			}
+			if(color.stroked){
+				g.setColor(color.strokedColor);
+				g.drawString(text.getText(), text.getLoc().x, text.getLoc().y);
+			}
+		}else{
+			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
+			g.drawString(text.getText(), text.getLoc().x, text.getLoc().y);
+		}
 	}
+	
 
 	@Override
 	public void visitCollection(SCollection coll)

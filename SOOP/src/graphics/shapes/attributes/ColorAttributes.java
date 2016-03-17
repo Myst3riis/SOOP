@@ -6,8 +6,8 @@ public class ColorAttributes extends Attributes
 {
 
 	public static final String ID = "colors";
-	public boolean filled = false;
-	public boolean stroked = true;
+	public boolean filled;
+	public boolean stroked;
 	public Color filledColor = Color.BLACK;
 	public Color strokedColor = Color.BLACK;
 
@@ -18,6 +18,8 @@ public class ColorAttributes extends Attributes
 		this.filledColor = filledColor;
 		this.strokedColor = strokedColor;
 	}
+
+	public ColorAttributes() {}
 
 	public boolean filled()
 	{

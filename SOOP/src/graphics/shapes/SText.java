@@ -33,7 +33,9 @@ public class SText extends Shape
 	public Rectangle getBounds()
 	{
 		FontAttributes txt = (FontAttributes)getAttributes("font");
-		return txt.getBounds(this.text);
+		Rectangle TXT = txt.getBounds(this.text);
+		TXT.translate(this.getLoc().x, this.getLoc().y);
+		return TXT;
 	}
 	
 	public String getText() {
