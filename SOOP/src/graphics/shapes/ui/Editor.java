@@ -55,7 +55,6 @@ public class Editor extends JFrame
 		this.model.add(c);
 		
 		SCircle c2 = new SCircle(new Point(150, 50), 100);
-		//c.addAttributes(new ColorAttributes(true, true, Color.BLUE, Color.YELLOW));
 		c2.addAttributes(new SelectionAttributes());
 		this.model.add(c2);
 
@@ -67,7 +66,7 @@ public class Editor extends JFrame
 
 		SCollection sc = new SCollection();
 		sc.addAttributes(new SelectionAttributes());
-		r = new SRectangle(new Point(20, 30), 30, 30);
+		r = new SRectangle(new Point(30, 40), 30, 30);
 		r.addAttributes(new ColorAttributes(true, true, Color.MAGENTA, Color.BLUE));
 		r.addAttributes(new SelectionAttributes());
 		sc.add(r);
@@ -83,7 +82,7 @@ public class Editor extends JFrame
 	{
 		Editor self = new Editor();
 		self.pack();
-		self.setVisible(true);
 		self.model.updateBounds(self.sview.getGraphics());
+		self.setVisible(true);
 	}
 }

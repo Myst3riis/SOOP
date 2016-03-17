@@ -10,6 +10,7 @@ import graphics.shapes.SText;
 import graphics.shapes.Shape;
 import graphics.shapes.ShapeVisitor;
 import graphics.shapes.attributes.ColorAttributes;
+import graphics.shapes.attributes.SelectionAttributes;
 
 public class ShapeDraftman implements ShapeVisitor
 {
@@ -27,6 +28,7 @@ public class ShapeDraftman implements ShapeVisitor
 	public void visitRectangle(SRectangle rect)
 	{
 		ColorAttributes color = (ColorAttributes)rect.getAttributes("colors");
+		SelectionAttributes selection = (SelectionAttributes)rect.getAttributes("selection");
 		
 		if (color != null){
 			if(color.filled){
@@ -41,6 +43,11 @@ public class ShapeDraftman implements ShapeVisitor
 			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
 			g.drawRect(rect.getBounds().x, rect.getBounds().y, rect.getBounds().width, rect.getBounds().height);
 		}
+		if (selection != null && selection.isSelected()){
+			g.drawRect(rect.getBounds().x, rect.getBounds().y, 10, 10);
+			
+		}
+			
 	}
 
 	
@@ -48,7 +55,7 @@ public class ShapeDraftman implements ShapeVisitor
 	public void visitCircle(SCircle circ)
 	{
 		ColorAttributes color = (ColorAttributes)circ.getAttributes("colors");
-		
+		SelectionAttributes selection = (SelectionAttributes)circ.getAttributes("selection");
 		if (color != null){
 			if(color.filled){
 				g.setColor(color.filledColor);
@@ -61,6 +68,12 @@ public class ShapeDraftman implements ShapeVisitor
 		}else{
 			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
 			g.drawOval(circ.getBounds().x, circ.getBounds().y, circ.getBounds().width, circ.getBounds().height);
+		}
+		if (selection != null && selection.isSelected()){
+			g.drawRect(circ.getBounds().x, circ.getBounds().y, 10, 10);
+			System.out.println("JE SUIS PASSE");
+		}else{
+			g.clearRect(circ.getBounds().x, circ.getBounds().y, 10, 10);
 		}
 	}
 	
@@ -92,5 +105,6 @@ public class ShapeDraftman implements ShapeVisitor
 		for(Iterator<Shape> it = coll.iterator(); it.hasNext();)
 			it.next().accept(this);
 	}
+
 
 }

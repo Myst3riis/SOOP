@@ -5,6 +5,12 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Iterator;
+
+import graphics.shapes.SCollection;
+import graphics.shapes.Shape;
+import graphics.shapes.ui.ShapesView;
+import graphics.shapes.attributes.SelectionAttributes;
 
 public class Controller implements MouseListener, MouseMotionListener, KeyListener
 {
@@ -46,6 +52,18 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 
 	public void mouseClicked(MouseEvent e)
 	{
+		for(Iterator<Shape>it = ((SCollection)model).iterator(); it.hasNext(); ){
+			Object shp = it.next();
+			if(  ( ( (Shape) shp).getBounds() ).contains(e.getX(), e.getY())  ){
+				SelectionAttributes selection = (SelectionAttributes)((Shape)shp).getAttributes("selection");
+				selection.select((Shape)shp);
+			}else{
+				SelectionAttributes selection = (SelectionAttributes)((Shape)shp).getAttributes("selection");
+				selection.unselect((Shape)shp);
+				
+			}
+		}
+		((ShapesView)this.view).paintComponent(this.view.getGraphics());
 	}
 
 	public void mouseEntered(MouseEvent e)
@@ -62,10 +80,14 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 
 	public void mouseDragged(MouseEvent evt)
 	{
+		//translate
 	}
 
 	public void keyTyped(KeyEvent evt)
 	{
+		// CTRL
+		
+		// SUPPR
 	}
 
 	public void keyPressed(KeyEvent evt)
