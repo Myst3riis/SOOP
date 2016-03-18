@@ -5,7 +5,7 @@ import graphics.shapes.Shape;
 public class SelectionAttributes extends Attributes
 {
 	public static final String ID = "selection";
-	
+
 	private boolean selected = false;
 
 	public boolean isSelected()
@@ -13,16 +13,16 @@ public class SelectionAttributes extends Attributes
 		return this.selected;
 	}
 
-	public void select(Shape shp)
+	public void select(Shape shape)
 	{
 		this.selected = true;
-		System.out.println(shp.getLoc() + "SELECTED");
+		System.out.println(shape.getBounds() + "SELECTED");
 	}
 
-	public void unselect(Shape shp)
+	public void unselect(Shape shape)
 	{
 		this.selected = false;
-		System.out.println(shp.getLoc() +"UNSELECTED");
+		System.out.println(shape.getBounds() + "UNSELECTED");
 	}
 
 	public void toggleSelection()

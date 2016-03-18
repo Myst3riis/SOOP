@@ -52,18 +52,21 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 
 	public void mouseClicked(MouseEvent e)
 	{
-		for(Iterator<Shape>it = ((SCollection)model).iterator(); it.hasNext(); ){
-			Object shp = it.next();
-			if(  ( ( (Shape) shp).getBounds() ).contains(e.getX(), e.getY())  ){
-				SelectionAttributes selection = (SelectionAttributes)((Shape)shp).getAttributes("selection");
-				selection.select((Shape)shp);
-			}else{
-				SelectionAttributes selection = (SelectionAttributes)((Shape)shp).getAttributes("selection");
-				selection.unselect((Shape)shp);
-				
+		System.out.println(e.toString());
+		for (Iterator<Shape> it = ((SCollection) model).iterator(); it.hasNext();)
+		{
+			Shape shape = it.next();
+			SelectionAttributes selection = (SelectionAttributes) shape.getAttributes("selection");
+			if (shape.getBounds().contains(e.getX(), e.getY()))
+			{
+				selection.select(shape);
+			}
+			else
+			{
+				selection.unselect(shape);
 			}
 		}
-		((ShapesView)this.view).paintComponent(this.view.getGraphics());
+		((ShapesView) this.view).paintComponent(this.view.getGraphics());
 	}
 
 	public void mouseEntered(MouseEvent e)
@@ -80,13 +83,13 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 
 	public void mouseDragged(MouseEvent evt)
 	{
-		//translate
+		// translate
 	}
 
 	public void keyTyped(KeyEvent evt)
 	{
 		// CTRL
-		
+
 		// SUPPR
 	}
 

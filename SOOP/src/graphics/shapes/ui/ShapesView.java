@@ -9,23 +9,24 @@ import graphics.ui.View;
 import graphics.shapes.ui.Grid;
 
 public class ShapesView extends View
-{ 	
+{
 	private SCollection sc = (SCollection) this.getModel();
-	
+	private ShapeDraftman sd = new ShapeDraftman(this.getGraphics());
+	private Grid grid = new Grid(this.getGraphics());
+
 	public ShapesView(Object model)
 	{
 		super(model);
 	}
 
 	public void paintComponent(Graphics g)
-	{	
-		ShapeDraftman sd = new ShapeDraftman(g);
-		//SCollection sc = (SCollection) this.getModel();
-		Grid grid = new Grid(g);
-		grid.drawGrid();
-		for(Iterator<Shape> it = sc.iterator(); it.hasNext();)
+	{
+		sd.updateGraphics(g);
+		grid.updateGraphics(g);
+
+		for (Iterator<Shape> it = sc.iterator(); it.hasNext();)
 			it.next().accept(sd);
-		
+		grid.drawGrid();
 	}
 
 }

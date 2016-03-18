@@ -19,7 +19,9 @@ public class ColorAttributes extends Attributes
 		this.strokedColor = strokedColor;
 	}
 
-	public ColorAttributes() {}
+	public ColorAttributes()
+	{
+	}
 
 	public boolean filled()
 	{

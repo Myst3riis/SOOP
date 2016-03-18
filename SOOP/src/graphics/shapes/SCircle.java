@@ -54,5 +54,4 @@ public class SCircle extends Shape
 	{
 		this.loc.translate(dx, dy);
 	}
-
 }

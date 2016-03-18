@@ -10,20 +10,17 @@ import graphics.shapes.attributes.FontAttributes;
 
 public class SCollection extends Shape
 {
-	private int xmin;
-	private int ymin;
+	private int xmin = 2000;
+	private int ymin = 2000;
 
-	private int xmax;
-	private int ymax;
+	private int xmax = 0;
+	private int ymax = 0;
 
 	private ArrayList<Shape> arr = new ArrayList<Shape>();
 
 	public SCollection()
 	{
-		this.xmin = 0;
-		this.ymin = 0;
-		this.xmax = 0;
-		this.ymax = 0;
+		
 	}
 
 	public Iterator<Shape> iterator()
@@ -52,7 +49,7 @@ public class SCollection extends Shape
 			{
 				((SCollection) tmp).updateBounds(g);
 			}
-			
+
 			Rectangle rect = tmp.getBounds();
 
 			Point loc = rect.getLocation();
@@ -113,6 +110,18 @@ public class SCollection extends Shape
 
 		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
 			it.next().translate(dx, dy);
+	}
+
+	public String toString()
+	{
+		StringBuilder res = new StringBuilder("Collection");
+		res.append(", ");
+		res.append(this.getBounds().toString());
+		res.append("[\n");
+		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
+			res.append(it.next().toString() + "\n");
+		res.append("]EndCollection");
+		return res.toString();
 	}
 
 }

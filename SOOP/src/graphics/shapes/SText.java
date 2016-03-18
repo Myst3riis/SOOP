@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 
 import graphics.shapes.attributes.FontAttributes;
 
-
 public class SText extends Shape
 {
 	private String text;
@@ -32,17 +31,19 @@ public class SText extends Shape
 	@Override
 	public Rectangle getBounds()
 	{
-		FontAttributes txt = (FontAttributes)getAttributes("font");
+		FontAttributes txt = (FontAttributes) getAttributes("font");
 		Rectangle TXT = txt.getBounds(this.text);
 		TXT.translate(this.getLoc().x, this.getLoc().y);
 		return TXT;
 	}
-	
-	public String getText() {
+
+	public String getText()
+	{
 		return this.text;
 	}
-	
-	public void setText(String text) {
+
+	public void setText(String text)
+	{
 		this.text = text;
 	}
 

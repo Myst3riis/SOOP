@@ -31,4 +31,23 @@ public abstract class Shape
 
 	public abstract void accept(ShapeVisitor sv);
 
+	public String toString()
+	{
+		StringBuilder res = new StringBuilder('[');
+		res.append(this.getClass().getSimpleName());
+		res.append(", ");
+		res.append(this.getBounds().toString());
+		res.append(", ");
+		boolean colors = (this.getAttributes("colors") != null);
+		res.append("ColorAttributes " + colors);
+		res.append(", ");
+		boolean font = (this.getAttributes("font") != null);
+		res.append("FontAttributes " + font);
+		res.append(", ");
+		boolean selection = (this.getAttributes("selection") != null);
+		res.append("SelectionAttributes " + selection);
+		res.append(']');
+		return res.toString();
+	}
+
 }

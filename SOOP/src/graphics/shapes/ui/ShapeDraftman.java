@@ -1,6 +1,8 @@
 package graphics.shapes.ui;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.Iterator;
 
 import graphics.shapes.SCircle;
@@ -16,6 +18,7 @@ public class ShapeDraftman implements ShapeVisitor
 {
 	public ColorAttributes DEFAULTCOLORATTRIBUTES;
 	private Graphics g;
+	private int selectSquareSize = 10;
 
 	public ShapeDraftman(Graphics g)
 	{
@@ -23,88 +26,199 @@ public class ShapeDraftman implements ShapeVisitor
 		this.DEFAULTCOLORATTRIBUTES = new ColorAttributes();
 	}
 
-	
 	@Override
 	public void visitRectangle(SRectangle rect)
 	{
-		ColorAttributes color = (ColorAttributes)rect.getAttributes("colors");
-		SelectionAttributes selection = (SelectionAttributes)rect.getAttributes("selection");
-		
-		if (color != null){
-			if(color.filled){
+		ColorAttributes color = (ColorAttributes) rect.getAttributes("colors");
+		SelectionAttributes selection = (SelectionAttributes) rect.getAttributes("selection");
+
+		int x = rect.getBounds().x;
+		int y = rect.getBounds().y;
+		int width = rect.getBounds().width;
+		int height = rect.getBounds().height;
+
+		if (color != null)
+		{
+			if (color.filled)
+			{
 				g.setColor(color.filledColor);
-				g.fillRect(rect.getBounds().x, rect.getBounds().y, rect.getBounds().width, rect.getBounds().height);
+				g.fillRect(x, y, width, height);
 			}
-			if(color.stroked){
+			if (color.stroked)
+			{
 				g.setColor(color.strokedColor);
-				g.drawRect(rect.getBounds().x, rect.getBounds().y, rect.getBounds().width, rect.getBounds().height);
+				g.drawRect(x, y, width, height);
 			}
-		}else{
+		}
+		else
+		{
 			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
-			g.drawRect(rect.getBounds().x, rect.getBounds().y, rect.getBounds().width, rect.getBounds().height);
+			g.drawRect(x, y, width, height);
 		}
-		if (selection != null && selection.isSelected()){
-			g.drawRect(rect.getBounds().x, rect.getBounds().y, 10, 10);
-			
-		}
-			
+
+		if (selection != null)
+			if (selection.isSelected())
+			{
+				g.setColor(Color.LIGHT_GRAY);
+				g.fillRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
+						this.selectSquareSize);
+				g.fillRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
+			}
+			else
+			{
+				g.clearRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
+						this.selectSquareSize);
+				g.clearRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
+			}
 	}
 
-	
 	@Override
 	public void visitCircle(SCircle circ)
 	{
-		ColorAttributes color = (ColorAttributes)circ.getAttributes("colors");
-		SelectionAttributes selection = (SelectionAttributes)circ.getAttributes("selection");
-		if (color != null){
-			if(color.filled){
+		ColorAttributes color = (ColorAttributes) circ.getAttributes("colors");
+		SelectionAttributes selection = (SelectionAttributes) circ.getAttributes("selection");
+
+		int x = circ.getBounds().x;
+		int y = circ.getBounds().y;
+		int width = circ.getBounds().width;
+		int height = circ.getBounds().height;
+
+		if (color != null)
+		{
+			if (color.filled)
+			{
 				g.setColor(color.filledColor);
-				g.fillOval(circ.getBounds().x, circ.getBounds().y, circ.getBounds().width, circ.getBounds().height);
+				g.fillOval(x, y, width, height);
 			}
-			if(color.stroked){
+			if (color.stroked)
+			{
 				g.setColor(color.strokedColor);
-				g.drawOval(circ.getBounds().x, circ.getBounds().y, circ.getBounds().width, circ.getBounds().height);
+				g.drawOval(x, y, width, height);
 			}
-		}else{
+		}
+		else
+		{
 			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
-			g.drawOval(circ.getBounds().x, circ.getBounds().y, circ.getBounds().width, circ.getBounds().height);
+			g.drawOval(x, y, width, height);
 		}
-		if (selection != null && selection.isSelected()){
-			g.drawRect(circ.getBounds().x, circ.getBounds().y, 10, 10);
-			System.out.println("JE SUIS PASSE");
-		}else{
-			g.clearRect(circ.getBounds().x, circ.getBounds().y, 10, 10);
-		}
+
+		if (selection != null)
+			if (selection.isSelected())
+			{
+				g.setColor(Color.LIGHT_GRAY);
+				g.fillRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
+						this.selectSquareSize);
+				g.fillRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
+			}
+			else
+			{
+				g.clearRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
+						this.selectSquareSize);
+				g.clearRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
+			}
 	}
-	
-	
+
 	@Override
 	public void visitText(SText text)
-	{	
-		ColorAttributes color = (ColorAttributes)text.getAttributes("colors");
-		
-		if (color != null){
-			if(color.filled){
+	{
+		ColorAttributes color = (ColorAttributes) text.getAttributes("colors");
+		SelectionAttributes selection = (SelectionAttributes) text.getAttributes("selection");
+
+		int x = text.getBounds().x;
+		int y = text.getBounds().y;
+		int width = text.getBounds().width;
+		int height = text.getBounds().height;
+		String word = text.getText();
+		Point loc = text.getLoc();
+
+		if (color != null)
+		{
+			if (color.filled)
+			{
 				g.setColor(color.filledColor);
-				g.fillRect(text.getBounds().x, text.getBounds().y, text.getBounds().width, text.getBounds().height);
+				g.fillRect(x, y, width, height);
 			}
-			if(color.stroked){
+			if (color.stroked)
+			{
 				g.setColor(color.strokedColor);
-				g.drawString(text.getText(), text.getLoc().x, text.getLoc().y);
+				g.drawString(word, loc.x, loc.y);
 			}
-		}else{
-			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
-			g.drawString(text.getText(), text.getLoc().x, text.getLoc().y);
 		}
+		else
+		{
+			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
+			g.drawString(word, loc.x, loc.y);
+		}
+
+		if (selection != null)
+			if (selection.isSelected())
+			{
+				g.setColor(Color.LIGHT_GRAY);
+				g.fillRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
+						this.selectSquareSize);
+				g.fillRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
+			}
+			else
+			{
+				g.clearRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
+						this.selectSquareSize);
+				g.clearRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
+			}
 	}
-	
 
 	@Override
 	public void visitCollection(SCollection coll)
 	{
-		for(Iterator<Shape> it = coll.iterator(); it.hasNext();)
+
+		ColorAttributes color = (ColorAttributes) coll.getAttributes("colors");
+		SelectionAttributes selection = (SelectionAttributes) coll.getAttributes("selection");
+
+		int x = coll.getBounds().x;
+		int y = coll.getBounds().y;
+		int width = coll.getBounds().width;
+		int height = coll.getBounds().height;
+
+		if (color != null)
+		{
+			if (color.filled)
+			{
+				g.setColor(color.filledColor);
+				g.fillRect(x, y, width, height);
+			}
+			if (color.stroked)
+			{
+				g.setColor(color.strokedColor);
+				g.drawRect(x, y, width, height);
+			}
+		}
+		else
+		{
+			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
+			g.drawRect(x, y, width, height);
+		}
+
+		if (selection != null)
+			if (selection.isSelected())
+			{
+				g.setColor(Color.LIGHT_GRAY);
+				g.fillRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
+						this.selectSquareSize);
+				g.fillRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
+			}
+			else
+			{
+				g.clearRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
+						this.selectSquareSize);
+				g.clearRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
+			}
+
+		for (Iterator<Shape> it = coll.iterator(); it.hasNext();)
 			it.next().accept(this);
 	}
 
+	public void updateGraphics(Graphics g)
+	{
+		this.g = g;
+	}
 
 }

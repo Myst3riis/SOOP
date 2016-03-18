@@ -34,8 +34,9 @@ public class Editor extends JFrame
 		this.buildModel();
 
 		this.sview = new ShapesView(this.model);
-		this.sview.setPreferredSize(new Dimension(300, 300));
+		this.sview.setPreferredSize(new Dimension(600, 600));
 		this.getContentPane().add(this.sview, java.awt.BorderLayout.CENTER);
+		this.setBackground(Color.WHITE);
 	}
 
 	private void buildModel()
@@ -44,16 +45,16 @@ public class Editor extends JFrame
 		this.model = new SCollection();
 		this.model.addAttributes(new SelectionAttributes());
 
-		SRectangle r = new SRectangle(new Point(10, 10), 20, 30);
+		SRectangle r = new SRectangle(new Point(200, 200), 50, 130);
 		r.addAttributes(new ColorAttributes(true, true, Color.BLUE, Color.GREEN));
 		r.addAttributes(new SelectionAttributes());
 		this.model.add(r);
-
+		/*
 		SCircle c = new SCircle(new Point(100, 100), 10);
 		c.addAttributes(new ColorAttributes(true, true, Color.BLUE, Color.YELLOW));
 		c.addAttributes(new SelectionAttributes());
 		this.model.add(c);
-		
+
 		SCircle c2 = new SCircle(new Point(150, 50), 100);
 		c2.addAttributes(new SelectionAttributes());
 		this.model.add(c2);
@@ -75,7 +76,7 @@ public class Editor extends JFrame
 		c.addAttributes(new SelectionAttributes());
 		sc.add(c);
 		this.model.add(sc);
-
+		 */
 	}
 
 	public static void main(String[] args)
@@ -84,5 +85,6 @@ public class Editor extends JFrame
 		self.pack();
 		self.model.updateBounds(self.sview.getGraphics());
 		self.setVisible(true);
+		System.out.println(self.model);
 	}
 }
