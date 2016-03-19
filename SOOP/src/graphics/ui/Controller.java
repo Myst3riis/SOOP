@@ -48,10 +48,6 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 
 	public void mouseReleased(MouseEvent e)
 	{
-	}
-
-	public void mouseClicked(MouseEvent e)
-	{
 		System.out.println(e.toString());
 		for (Iterator<Shape> it = ((SCollection) model).iterator(); it.hasNext();)
 		{
@@ -60,13 +56,18 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 			if (shape.getBounds().contains(e.getX(), e.getY()))
 			{
 				selection.select(shape);
+				((ShapesView) this.view).paintComponent(this.view.getGraphics());
 			}
-			else
+			else if (selection.isSelected())
 			{
 				selection.unselect(shape);
+				((ShapesView) this.view).paintComponent(this.view.getGraphics());
 			}
 		}
-		((ShapesView) this.view).paintComponent(this.view.getGraphics());
+	}
+
+	public void mouseClicked(MouseEvent e)
+	{
 	}
 
 	public void mouseEntered(MouseEvent e)
