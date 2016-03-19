@@ -23,10 +23,10 @@ public class ShapesView extends View
 	{
 		sd.updateGraphics(g);
 		grid.updateGraphics(g);
-
+		grid.drawGrid();
 		for (Iterator<Shape> it = sc.iterator(); it.hasNext();)
 			it.next().accept(sd);
-		grid.drawGrid();
+		
 	}
 
 }

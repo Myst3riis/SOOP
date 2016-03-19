@@ -7,11 +7,11 @@ import java.awt.Graphics;
 public class Grid
 {
 
-	private final int LIMITX = 300000;
-	private final int LIMITY = 300000;
+	private final int LIMITX = 2000;
+	private final int LIMITY = 2000;
 	private int zoomValue;
 	private int spacing;
-	private Color color = new Color(160, 170, 173); // #A0AAAD
+	private Color color = new Color(232, 232, 232); // #A0AAAD
 	private int xOffset;
 	private int yOffset;
 	private Graphics g;

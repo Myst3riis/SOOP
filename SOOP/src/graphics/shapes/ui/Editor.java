@@ -21,7 +21,7 @@ public class Editor extends JFrame
 
 	public Editor()
 	{
-		super("Shapes Editor");
+		super("SOOP");
 
 		this.addWindowListener(new java.awt.event.WindowAdapter()
 		{
@@ -54,11 +54,11 @@ public class Editor extends JFrame
 		c.addAttributes(new ColorAttributes(true, true, Color.BLUE, Color.YELLOW));
 		c.addAttributes(new SelectionAttributes());
 		this.model.add(c);
-		/*
+		
 		SCircle c2 = new SCircle(new Point(150, 50), 100);
 		c2.addAttributes(new SelectionAttributes());
 		this.model.add(c2);
-		*/
+		
 		SText t = new SText(new Point(100, 100), "hello");
 		t.addAttributes(new ColorAttributes(true, true, Color.YELLOW, Color.BLUE));
 		t.addAttributes(new FontAttributes());
@@ -76,7 +76,7 @@ public class Editor extends JFrame
 		c.addAttributes(new SelectionAttributes());
 		sc.add(c);
 		this.model.add(sc);
-		 */
+		*/ 
 	}
 
 	public static void main(String[] args)
@@ -85,6 +85,6 @@ public class Editor extends JFrame
 		self.pack();
 		self.model.updateBounds(self.sview.getGraphics());
 		self.setVisible(true);
-		System.out.println(self.model);
+		//System.out.println(self.model);
 	}
 }

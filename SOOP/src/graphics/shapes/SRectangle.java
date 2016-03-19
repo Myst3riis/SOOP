@@ -47,6 +47,7 @@ public class SRectangle extends Shape
 		return new Rectangle(this.rect);
 	}
 
+	
 	@Override
 	public void accept(ShapeVisitor sv)
 	{

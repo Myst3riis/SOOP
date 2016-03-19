@@ -29,13 +29,13 @@ public class SelectionAttributes extends Attributes
 	public void select(Shape shape)
 	{
 		this.selected = true;
-		System.out.println(shape.getBounds() + "SELECTED");
+		//System.out.println(shape.getBounds() + "SELECTED");
 	}
 
 	public void unselect(Shape shape)
 	{
 		this.selected = false;
-		System.out.println(shape.getBounds() + "UNSELECTED");
+		//System.out.println(shape.getBounds() + "UNSELECTED");
 	}
 
 	public void toggleSelection()

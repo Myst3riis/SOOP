@@ -20,7 +20,7 @@ public class SCollection extends Shape
 
 	public SCollection()
 	{
-		
+
 	}
 
 	public Iterator<Shape> iterator()
@@ -111,6 +111,7 @@ public class SCollection extends Shape
 		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
 			it.next().translate(dx, dy);
 	}
+
 
 	public String toString()
 	{

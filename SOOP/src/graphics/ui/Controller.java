@@ -7,6 +7,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.Iterator;
 
 import graphics.shapes.SCollection;
@@ -15,12 +17,13 @@ import graphics.shapes.ui.ShapesView;
 import graphics.shapes.attributes.SelectionAttributes;
 import graphics.shapes.ui.ShapeDraftman;
 
-public class Controller implements MouseListener, MouseMotionListener, KeyListener
+public class Controller implements MouseListener, MouseMotionListener, KeyListener //, MouseWheelListener
 {
 	private Object model;
 	private View view;
 	private int offsetX;
 	private int offsetY;
+	private boolean ctrlPressed = false;
 
 	public Controller(Object newModel)
 	{
@@ -59,6 +62,7 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 				((ShapesView) this.view).paintComponent(this.view.getGraphics());
 				offsetX = e.getX() - shape.getBounds().x;
 				offsetY = e.getY() - shape.getBounds().y;
+				
 			}
 			else if (selection.isSelected())
 			{
@@ -123,17 +127,36 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 
 	public void keyTyped(KeyEvent evt)
 	{
-
-		// CTRL
-
-		// SUPPR
+		
 	}
 
 	public void keyPressed(KeyEvent evt)
-	{
+	{	System.out.println(evt);
+		if(evt.getKeyCode() == 17 && !ctrlPressed ){
+			ctrlPressed = true; 
+		}
+
+
+		if(evt.getKeyCode() == 127 ){
+			//Suppr
+		}
 	}
 
 	public void keyReleased(KeyEvent evt)
 	{
+		if(evt.getKeyCode() == 17 && ctrlPressed ){
+			ctrlPressed = false; 
+		}
+
+		
 	}
+/*
+	public void mouseWheelMoved(MouseWheelEvent e)
+	{
+		if (ctrlPressed){
+			((ShapesView)view).getGrid().updateZoomValue(e.getWheelRotation()*2);;
+		}
+	}
+*/
+	
 }
