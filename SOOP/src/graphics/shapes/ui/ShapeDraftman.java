@@ -18,7 +18,7 @@ public class ShapeDraftman implements ShapeVisitor
 {
 	public ColorAttributes DEFAULTCOLORATTRIBUTES;
 	private Graphics g;
-	private int selectSquareSize = 10;
+	public static int selectSquareSize = 10;
 
 	public ShapeDraftman(Graphics g)
 	{
@@ -64,7 +64,7 @@ public class ShapeDraftman implements ShapeVisitor
 						this.selectSquareSize);
 				g.fillRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
 			}
-			else
+			else if((selection.isSelected() && selection.isDragged()) || !selection.isSelected())
 			{
 				g.clearRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
 						this.selectSquareSize);

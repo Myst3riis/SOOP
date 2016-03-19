@@ -1,5 +1,7 @@
 package graphics.ui;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -11,11 +13,14 @@ import graphics.shapes.SCollection;
 import graphics.shapes.Shape;
 import graphics.shapes.ui.ShapesView;
 import graphics.shapes.attributes.SelectionAttributes;
+import graphics.shapes.ui.ShapeDraftman;
 
 public class Controller implements MouseListener, MouseMotionListener, KeyListener
 {
 	private Object model;
 	private View view;
+	private int offsetX;
+	private int offsetY;
 
 	public Controller(Object newModel)
 	{
@@ -44,11 +49,6 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 
 	public void mousePressed(MouseEvent e)
 	{
-	}
-
-	public void mouseReleased(MouseEvent e)
-	{
-		System.out.println(e.toString());
 		for (Iterator<Shape> it = ((SCollection) model).iterator(); it.hasNext();)
 		{
 			Shape shape = it.next();
@@ -57,6 +57,8 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 			{
 				selection.select(shape);
 				((ShapesView) this.view).paintComponent(this.view.getGraphics());
+				offsetX = e.getX() - shape.getBounds().x;
+				offsetY = e.getY() - shape.getBounds().y;
 			}
 			else if (selection.isSelected())
 			{
@@ -64,6 +66,10 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 				((ShapesView) this.view).paintComponent(this.view.getGraphics());
 			}
 		}
+	}
+
+	public void mouseReleased(MouseEvent e)
+	{
 	}
 
 	public void mouseClicked(MouseEvent e)
@@ -84,11 +90,40 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 
 	public void mouseDragged(MouseEvent evt)
 	{
-		// translate
+		for (Iterator<Shape> it = ((SCollection) model).iterator(); it.hasNext();)
+		{
+
+			Shape shape = it.next();
+			SelectionAttributes selection = (SelectionAttributes) shape.getAttributes("selection");
+			if (selection.isSelected())
+			{
+				selection.drag();
+				int dx = evt.getX();
+				int dy = evt.getY();
+				
+				int x = shape.getBounds().x;
+				int y = shape.getBounds().y;
+				int width = shape.getBounds().width;
+				int height = shape.getBounds().height;
+				
+				Graphics g = this.view.getGraphics();
+				g.clearRect(x,y, width, height);
+				g.clearRect(x - ShapeDraftman.selectSquareSize, y - ShapeDraftman.selectSquareSize, ShapeDraftman.selectSquareSize,ShapeDraftman.selectSquareSize);
+				g.clearRect(x + width, y + height, ShapeDraftman.selectSquareSize, ShapeDraftman.selectSquareSize);
+				g.setColor(Color.WHITE);
+				g.drawRect(x, y, width, height);
+				
+				shape.translate(dx - offsetX, dy - offsetY);
+				
+				((ShapesView) this.view).paintComponent(this.view.getGraphics());
+				
+			}
+		}
 	}
 
 	public void keyTyped(KeyEvent evt)
 	{
+
 		// CTRL
 
 		// SUPPR

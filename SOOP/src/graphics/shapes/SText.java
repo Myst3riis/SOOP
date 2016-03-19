@@ -56,7 +56,8 @@ public class SText extends Shape
 	@Override
 	public void translate(int dx, int dy)
 	{
-		this.loc.translate(dx, dy);
+		//this.loc.translate(dx, dy);
+		this.setLoc(new Point(dx, dy));
 	}
 
 }

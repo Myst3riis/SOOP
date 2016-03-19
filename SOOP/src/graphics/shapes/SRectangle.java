@@ -12,6 +12,7 @@ public class SRectangle extends Shape
 
 	private Rectangle rect;
 
+
 	public SRectangle(Point point, int width, int height)
 	{
 		this.rect = new Rectangle(point.x, point.y, width, height);
@@ -37,7 +38,7 @@ public class SRectangle extends Shape
 	@Override
 	public void translate(int dx, int dy)
 	{
-		this.rect.translate(dx, dy);
+		this.setLoc(new Point(dx, dy));
 	}
 
 	@Override

@@ -44,27 +44,27 @@ public class Editor extends JFrame
 
 		this.model = new SCollection();
 		this.model.addAttributes(new SelectionAttributes());
-
+		
 		SRectangle r = new SRectangle(new Point(200, 200), 50, 130);
 		r.addAttributes(new ColorAttributes(true, true, Color.BLUE, Color.GREEN));
 		r.addAttributes(new SelectionAttributes());
 		this.model.add(r);
-		/*
-		SCircle c = new SCircle(new Point(100, 100), 10);
+		
+		SCircle c = new SCircle(new Point(100, 100), 25);
 		c.addAttributes(new ColorAttributes(true, true, Color.BLUE, Color.YELLOW));
 		c.addAttributes(new SelectionAttributes());
 		this.model.add(c);
-
+		/*
 		SCircle c2 = new SCircle(new Point(150, 50), 100);
 		c2.addAttributes(new SelectionAttributes());
 		this.model.add(c2);
-
+		*/
 		SText t = new SText(new Point(100, 100), "hello");
 		t.addAttributes(new ColorAttributes(true, true, Color.YELLOW, Color.BLUE));
 		t.addAttributes(new FontAttributes());
 		t.addAttributes(new SelectionAttributes());
 		this.model.add(t);
-
+		/*
 		SCollection sc = new SCollection();
 		sc.addAttributes(new SelectionAttributes());
 		r = new SRectangle(new Point(30, 40), 30, 30);

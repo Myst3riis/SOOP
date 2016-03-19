@@ -52,6 +52,6 @@ public class SCircle extends Shape
 	@Override
 	public void translate(int dx, int dy)
 	{
-		this.loc.translate(dx, dy);
+		this.setLoc(new Point(dx, dy));
 	}
 }
