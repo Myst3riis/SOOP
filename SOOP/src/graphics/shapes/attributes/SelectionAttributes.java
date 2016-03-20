@@ -26,16 +26,14 @@ public class SelectionAttributes extends Attributes
 		return this.selected;
 	}
 
-	public void select(Shape shape)
+	public void select()
 	{
 		this.selected = true;
-		//System.out.println(shape.getBounds() + "SELECTED");
 	}
 
-	public void unselect(Shape shape)
+	public void unselect()
 	{
 		this.selected = false;
-		//System.out.println(shape.getBounds() + "UNSELECTED");
 	}
 
 	public void toggleSelection()

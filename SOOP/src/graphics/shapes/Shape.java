@@ -33,7 +33,8 @@ public abstract class Shape
 
 	public String toString()
 	{
-		StringBuilder res = new StringBuilder('[');
+		StringBuilder res = new StringBuilder();
+		res.append('[');
 		res.append(this.getClass().getSimpleName());
 		res.append(", ");
 		res.append(this.getBounds().toString());

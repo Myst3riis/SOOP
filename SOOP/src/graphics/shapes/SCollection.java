@@ -15,6 +15,8 @@ public class SCollection extends Shape
 
 	private int xmax = 0;
 	private int ymax = 0;
+	
+	private Rectangle rect = new Rectangle(this.xmin, this.ymin, this.xmax - this.xmin, this.ymax - this.ymin);
 
 	private ArrayList<Shape> arr = new ArrayList<Shape>();
 
@@ -38,19 +40,19 @@ public class SCollection extends Shape
 		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
 		{
 
-			Shape tmp = it.next();
+			Shape shape = it.next();
 
-			if (tmp.getClass().getName().equals("graphics.shapes.SText"))
+			if (shape.getClass().getSimpleName().equals("SText"))
 			{
-				FontAttributes fatt = (FontAttributes) ((SText) tmp).getAttributes("font");
+				FontAttributes fatt = (FontAttributes) ((SText) shape).getAttributes("font");
 				fatt.setFontRenderContext(g);
 			}
-			else if (tmp.getClass().getName().equals("graphics.shapes.SCollection"))
+			else if (shape.getClass().getSimpleName().equals("SCollection"))
 			{
-				((SCollection) tmp).updateBounds(g);
+				((SCollection) shape).updateBounds(g);
 			}
 
-			Rectangle rect = tmp.getBounds();
+			Rectangle rect = shape.getBounds();
 
 			Point loc = rect.getLocation();
 
@@ -66,22 +68,20 @@ public class SCollection extends Shape
 			if (loc.y + rect.height > this.ymax)
 				this.ymax = (loc.y + rect.height);
 		}
-
+		
+		this.rect.setBounds(this.xmin, this.ymin, this.xmax - this.xmin, this.ymax - this.ymin);
 	}
 
 	@Override
 	public Point getLoc()
 	{
-		return new Point(this.xmin, this.ymin);
+		return this.rect.getLocation();
 	}
 
 	@Override
 	public void setLoc(Point loc)
 	{
-		this.xmax += (loc.x - this.xmin);
-		this.ymax += (loc.y - this.ymin);
-		this.xmin = loc.x;
-		this.ymin = loc.y;
+		this.rect.setLocation(loc);
 
 		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
 			it.next().setLoc(loc);
@@ -90,7 +90,7 @@ public class SCollection extends Shape
 	@Override
 	public Rectangle getBounds()
 	{
-		return new Rectangle(this.xmin, this.ymin, this.xmax - this.xmin, this.ymax - this.ymin);
+		return this.rect;
 	}
 
 	@Override
@@ -103,10 +103,7 @@ public class SCollection extends Shape
 	@Override
 	public void translate(int dx, int dy)
 	{
-		this.xmin += dx;
-		this.ymin += dy;
-		this.xmax += dx;
-		this.ymax += dy;
+		this.rect.translate(dx, dy);
 
 		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
 			it.next().translate(dx, dy);

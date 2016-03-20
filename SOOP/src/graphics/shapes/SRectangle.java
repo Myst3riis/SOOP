@@ -12,7 +12,6 @@ public class SRectangle extends Shape
 
 	private Rectangle rect;
 
-
 	public SRectangle(Point point, int width, int height)
 	{
 		this.rect = new Rectangle(point.x, point.y, width, height);

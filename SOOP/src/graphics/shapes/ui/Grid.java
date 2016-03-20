@@ -9,19 +9,15 @@ public class Grid
 
 	private final int LIMITX = 2000;
 	private final int LIMITY = 2000;
-	private int zoomValue;
-	private int spacing;
+	private int zoomValue = 100;
+	private int spacing = 20;
 	private Color color = new Color(232, 232, 232); // #A0AAAD
-	private int xOffset;
-	private int yOffset;
+	private int xOffset = 0;
+	private int yOffset = 0;
 	private Graphics g;
 
 	public Grid(Graphics g)
 	{
-		this.spacing = 20;
-		this.zoomValue = 100;
-		this.xOffset = 0;
-		this.yOffset = 0;
 		this.g = g;
 	}
 
@@ -47,6 +43,10 @@ public class Grid
 
 		// déplace les formes
 		// ...collection.translate(dx,dy);
+	}
+	
+	public void updateZoomLevel(int zoom) {
+		
 	}
 
 	public void updateSpacing()

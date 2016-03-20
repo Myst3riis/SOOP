@@ -18,7 +18,7 @@ public class ShapeDraftman implements ShapeVisitor
 {
 	public ColorAttributes DEFAULTCOLORATTRIBUTES;
 	private Graphics g;
-	public static int selectSquareSize = 10;
+	private int selectSquareSize = 10;
 
 	public ShapeDraftman(Graphics g)
 	{
@@ -30,7 +30,6 @@ public class ShapeDraftman implements ShapeVisitor
 	public void visitRectangle(SRectangle rect)
 	{
 		ColorAttributes color = (ColorAttributes) rect.getAttributes("colors");
-		SelectionAttributes selection = (SelectionAttributes) rect.getAttributes("selection");
 
 		int x = rect.getBounds().x;
 		int y = rect.getBounds().y;
@@ -56,20 +55,6 @@ public class ShapeDraftman implements ShapeVisitor
 			g.drawRect(x, y, width, height);
 		}
 
-		if (selection != null)
-			if (selection.isSelected())
-			{
-				g.setColor(Color.LIGHT_GRAY);
-				g.fillRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
-						this.selectSquareSize);
-				g.fillRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
-			}
-			else if((selection.isSelected() && selection.isDragged()) || !selection.isSelected())
-			{
-				g.clearRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
-						this.selectSquareSize);
-				g.clearRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
-			}
 	}
 
 	@Override
@@ -102,20 +87,6 @@ public class ShapeDraftman implements ShapeVisitor
 			g.drawOval(x, y, width, height);
 		}
 
-		if (selection != null)
-			if (selection.isSelected())
-			{
-				g.setColor(Color.LIGHT_GRAY);
-				g.fillRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
-						this.selectSquareSize);
-				g.fillRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
-			}
-			else
-			{
-				g.clearRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
-						this.selectSquareSize);
-				g.clearRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
-			}
 	}
 
 	@Override
@@ -150,20 +121,6 @@ public class ShapeDraftman implements ShapeVisitor
 			g.drawString(word, loc.x, loc.y);
 		}
 
-		if (selection != null)
-			if (selection.isSelected())
-			{
-				g.setColor(Color.LIGHT_GRAY);
-				g.fillRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
-						this.selectSquareSize);
-				g.fillRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
-			}
-			else
-			{
-				g.clearRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
-						this.selectSquareSize);
-				g.clearRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
-			}
 	}
 
 	@Override
@@ -197,28 +154,48 @@ public class ShapeDraftman implements ShapeVisitor
 			g.drawRect(x, y, width, height);
 		}
 
+		for (Iterator<Shape> it = coll.iterator(); it.hasNext();)
+			it.next().accept(this);
+	}
+
+	public void SelectionSquares(Shape shape)
+	{
+		/* Sert à centraliser l'affichage des carrés de sélection */
+		SelectionAttributes selection = (SelectionAttributes) shape.getAttributes("selection");
+
+		int x = shape.getBounds().x;
+		int y = shape.getBounds().y;
+		int width = shape.getBounds().width;
+		int height = shape.getBounds().height;
+		int selectSquareSize = this.getSelectSquareSize();
+		
 		if (selection != null)
 			if (selection.isSelected())
 			{
 				g.setColor(Color.LIGHT_GRAY);
-				g.fillRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
-						this.selectSquareSize);
-				g.fillRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
+				g.fillRect(x - selectSquareSize, y - selectSquareSize, selectSquareSize, selectSquareSize);
+				g.fillRect(x + width, y + height, selectSquareSize, selectSquareSize);
 			}
-			else
+			else if ((selection.isSelected() && selection.isDragged()) || !selection.isSelected())
 			{
-				g.clearRect(x - this.selectSquareSize, y - this.selectSquareSize, this.selectSquareSize,
-						this.selectSquareSize);
-				g.clearRect(x + width, y + height, this.selectSquareSize, this.selectSquareSize);
+				g.clearRect(x - selectSquareSize, y - selectSquareSize, selectSquareSize, selectSquareSize);
+				g.clearRect(x + width, y + height, selectSquareSize, selectSquareSize);
 			}
-
-		for (Iterator<Shape> it = coll.iterator(); it.hasNext();)
-			it.next().accept(this);
 	}
 
 	public void updateGraphics(Graphics g)
 	{
 		this.g = g;
+	}
+
+	public int getSelectSquareSize()
+	{
+		return selectSquareSize;
+	}
+
+	public void setSelectSquareSize(int selectSquareSize)
+	{
+		this.selectSquareSize = selectSquareSize;
 	}
 
 }
