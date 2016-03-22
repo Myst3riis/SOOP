@@ -27,7 +27,7 @@ public class FontAttributes extends Attributes
 
 	public Rectangle getBounds(String text)
 	{
-		return this.font.getStringBounds(text, frc).getBounds();
+		return this.font.getStringBounds(text, this.frc).getBounds();
 	}
 
 	public Font font()

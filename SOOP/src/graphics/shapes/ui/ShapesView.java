@@ -26,22 +26,7 @@ public class ShapesView extends View
 		this.addMouseWheelListener(this.scontroller);
 		this.setFocusable(true);
 	}
-/*
-	public void updateModel(SCollection model)
-	{
-		this.model = model;
-	}
-
-	public void updateView()//ShapesView view)
-	{
-		this.scontroller.setView(this);
-	}
-
-	public void updateController(SCollection model)
-	{
-		this.scontroller.setModel(model);
-	}
-*/
+	
 	public SCollection getModel()
 	{
 		return this.model;
@@ -69,7 +54,5 @@ public class ShapesView extends View
 		grid.drawGrid();
 		for (Iterator<Shape> it = this.model.iterator(); it.hasNext();)
 			it.next().accept(sd);
-
 	}
-
 }

@@ -53,7 +53,7 @@ public class Buttons extends JFrame
 	private String txtSTR;
 
 
-	public static void affiche(SCollection model, ShapesView sview)
+	public void affiche(SCollection model, ShapesView sview)
 	{
 		EventQueue.invokeLater(new Runnable()
 		{
@@ -74,9 +74,9 @@ public class Buttons extends JFrame
 
 	public Buttons(SCollection model, ShapesView sview)
 	{
-		initialize();
 		this.model = model;
 		this.sview = sview;
+		initialize();
 	}
 
 
@@ -130,19 +130,17 @@ public class Buttons extends JFrame
 					c3.addAttributes(new SelectionAttributes());
 					c3.addAttributes(new OffsetAttributes());
 					model.add(c3);
-					sview.paintComponent(sview.getGraphics());
-					model.updateBounds(sview.getGraphics());
 				}
 				else if (!onCirc && onText && !onRect)
 				{
+					txtSTR = textField.getText();
 					SText t2 = new SText(new Point(getPositionX(), getPositionY()), txtSTR);
+					System.out.println(txtSTR);
 					t2.addAttributes(new ColorAttributes(true, true, fColor, sColor));
 					t2.addAttributes(new FontAttributes());
 					t2.addAttributes(new SelectionAttributes());
 					t2.addAttributes(new OffsetAttributes());
 					model.add(t2);
-					sview.paintComponent(sview.getGraphics());
-					model.updateBounds(sview.getGraphics());
 				}
 				else if (!onCirc && !onText && onRect)
 				{
@@ -151,13 +149,14 @@ public class Buttons extends JFrame
 					a.addAttributes(new SelectionAttributes());
 					a.addAttributes(new OffsetAttributes());
 					model.add(a);
-					sview.paintComponent(sview.getGraphics());
-					model.updateBounds(sview.getGraphics());
+					
 				}
 				else
 				{
 					System.out.println("SELECT ONE SHAPE !!");
 				}
+				sview.paintComponent(sview.getGraphics());
+				model.updateBounds(sview.getGraphics());
 			}
 		});
 
@@ -315,7 +314,5 @@ public class Buttons extends JFrame
 		textField.setBounds(73, 272, 259, 52);
 		layeredPane.add(textField);
 		textField.setColumns(10);
-		txtSTR = textField.getText();
-
 	}
 }

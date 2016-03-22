@@ -12,6 +12,7 @@ import graphics.shapes.SText;
 import graphics.shapes.Shape;
 import graphics.shapes.ShapeVisitor;
 import graphics.shapes.attributes.ColorAttributes;
+import graphics.shapes.attributes.FontAttributes;
 import graphics.shapes.attributes.SelectionAttributes;
 
 public class ShapeDraftman implements ShapeVisitor
@@ -61,8 +62,6 @@ public class ShapeDraftman implements ShapeVisitor
 	public void visitCircle(SCircle circ)
 	{
 		ColorAttributes color = (ColorAttributes) circ.getAttributes("colors");
-		SelectionAttributes selection = (SelectionAttributes) circ.getAttributes("selection");
-
 		int x = circ.getBounds().x;
 		int y = circ.getBounds().y;
 		int width = circ.getBounds().width;
@@ -93,8 +92,10 @@ public class ShapeDraftman implements ShapeVisitor
 	public void visitText(SText text)
 	{
 		ColorAttributes color = (ColorAttributes) text.getAttributes("colors");
-		SelectionAttributes selection = (SelectionAttributes) text.getAttributes("selection");
-
+		FontAttributes font = (FontAttributes) text.getAttributes("font");
+		
+		font.setFontRenderContext(this.g);
+		
 		int x = text.getBounds().x;
 		int y = text.getBounds().y;
 		int width = text.getBounds().width;
@@ -128,8 +129,6 @@ public class ShapeDraftman implements ShapeVisitor
 	{
 
 		ColorAttributes color = (ColorAttributes) coll.getAttributes("colors");
-		SelectionAttributes selection = (SelectionAttributes) coll.getAttributes("selection");
-
 		int x = coll.getBounds().x;
 		int y = coll.getBounds().y;
 		int width = coll.getBounds().width;
