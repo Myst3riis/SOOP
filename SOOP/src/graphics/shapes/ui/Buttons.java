@@ -6,27 +6,30 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.JSplitPane;
 import java.awt.Font;
-import javax.swing.JMenuBar;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Button;
-import java.awt.Choice;
-import javax.swing.JInternalFrame;
+
 import javax.swing.JLayeredPane;
 import javax.swing.JToggleButton;
 import javax.swing.JTextPane;
 import java.awt.Color;
-import javax.swing.JEditorPane;
-import javax.swing.UIManager;
-import javax.swing.JLabel;
+//import java.awt.Dimension;
+
 import javax.swing.SwingConstants;
+
+import graphics.shapes.SCircle;
+import graphics.shapes.SCollection;
+import graphics.shapes.SRectangle;
+import graphics.shapes.SText;
+import graphics.shapes.attributes.ColorAttributes;
+import graphics.shapes.attributes.FontAttributes;
+import graphics.shapes.attributes.OffsetAttributes;
+import graphics.shapes.attributes.SelectionAttributes;
+//import javax.swing.JList;
+import javax.swing.JComboBox;
+import javax.swing.text.html.StyleSheet;
 
 public class Buttons extends JFrame
 {
@@ -37,17 +40,20 @@ public class Buttons extends JFrame
 	private JTextField positionX;
 	private JTextField positionY;
 	private JTextField txtSoop;
+	private int fillColor;
+	private int strokeColor;
+	private String[] colorList =
+	{ "black", "blue", "gray", "green", "orange", "red", "white", "yellow" };
 	private boolean onRect = false;
 	private boolean onText = false;
 	private boolean onCirc = true;
+	private SCollection model;
+	private ShapesView sview;
 	private JTextField textField;
+	private String txtSTR;
 
-	/**
-	 * Launch the application.
-	 */
-	
-	/*
-	public static void main(String[] args)
+
+	public static void affiche(SCollection model, ShapesView sview)
 	{
 		EventQueue.invokeLater(new Runnable()
 		{
@@ -55,7 +61,7 @@ public class Buttons extends JFrame
 			{
 				try
 				{
-					Boutons window = new Boutons();
+					Buttons window = new Buttons(model, sview);
 					window.frmPanel.setVisible(true);
 				}
 				catch (Exception e)
@@ -65,38 +71,15 @@ public class Buttons extends JFrame
 			}
 		});
 	}
-	*/
-	public static void affiche(String[] args)
-	{
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
-			{
-				try
-				{
-					Buttons window = new Buttons();
-					window.frmPanel.setVisible(true);
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	/**
-	 * Create the application.
-	 */
-	public Buttons()
+
+	public Buttons(SCollection model, ShapesView sview)
 	{
 		initialize();
+		this.model = model;
+		this.sview = sview;
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	
+
 	public int getHeight()
 	{
 		return Integer.parseInt(this.height.getText());
@@ -106,29 +89,23 @@ public class Buttons extends JFrame
 	{
 		return Integer.parseInt(this.width.getText());
 	}
-	/*
-	public String getPosition()
-	{
-		return this.position.getText();
-	}
-	*/
+
 	public int getPositionX()
 	{
 		return Integer.parseInt(this.positionX.getText());
 	}
+
 	public int getPositionY()
 	{
 		return Integer.parseInt(this.positionY.getText());
 	}
-	
-	
 
 	private void initialize()
 	{
 		frmPanel = new JFrame();
 		frmPanel.setForeground(Color.WHITE);
-		frmPanel.setTitle("Panel");
-		frmPanel.setBounds(100, 100, 362, 266);
+		frmPanel.setTitle("sOOP Panel");
+		frmPanel.setBounds(100, 100, 362, 421);
 		frmPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JLayeredPane layeredPane = new JLayeredPane();
@@ -136,34 +113,50 @@ public class Buttons extends JFrame
 		frmPanel.getContentPane().add(layeredPane, BorderLayout.CENTER);
 
 		JButton btnNewButton = new JButton("Add shape");
-		btnNewButton.setBounds(117, 189, 97, 25);
+		btnNewButton.setBounds(117, 336, 97, 25);
 		layeredPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent ev)
 			{
+				StyleSheet cl = new StyleSheet();
+				Color fColor = cl.stringToColor(colorList[fillColor]);
+				Color sColor = cl.stringToColor(colorList[strokeColor]);
+
 				if (onCirc && !onText && !onRect)
 				{
-					System.out.println("ADD CERCLE (" + getPositionX()+","+getPositionY()+")" + getWidth() +","+ getHeight());
-
+					SCircle c3 = new SCircle(new Point(getPositionX(), getPositionY()), getHeight() / 2);
+					c3.addAttributes(new ColorAttributes(true, true, fColor, sColor));
+					c3.addAttributes(new SelectionAttributes());
+					c3.addAttributes(new OffsetAttributes());
+					model.add(c3);
+					sview.paintComponent(sview.getGraphics());
+					model.updateBounds(sview.getGraphics());
 				}
 				else if (!onCirc && onText && !onRect)
 				{
-					System.out.println("ADD TEXT (" + getPositionX()+","+getPositionY()+")" + getWidth() +","+ getHeight());
-
+					SText t2 = new SText(new Point(getPositionX(), getPositionY()), txtSTR);
+					t2.addAttributes(new ColorAttributes(true, true, fColor, sColor));
+					t2.addAttributes(new FontAttributes());
+					t2.addAttributes(new SelectionAttributes());
+					t2.addAttributes(new OffsetAttributes());
+					model.add(t2);
+					sview.paintComponent(sview.getGraphics());
+					model.updateBounds(sview.getGraphics());
 				}
 				else if (!onCirc && !onText && onRect)
 				{
-					System.out.println("ADD RECTANGLE (" + getPositionX()+","+getPositionY()+")" + getWidth() +","+ getHeight());
-					getWidth();
-					getHeight();
-					getPositionX();
-					getPositionY();
-
+					SRectangle a = new SRectangle(new Point(getPositionX(), getPositionY()), getWidth(), getHeight());
+					a.addAttributes(new ColorAttributes(true, true, fColor, sColor));
+					a.addAttributes(new SelectionAttributes());
+					a.addAttributes(new OffsetAttributes());
+					model.add(a);
+					sview.paintComponent(sview.getGraphics());
+					model.updateBounds(sview.getGraphics());
 				}
 				else
 				{
-					System.out.println("Select one shape !");
+					System.out.println("SELECT ONE SHAPE !!");
 				}
 			}
 		});
@@ -178,16 +171,13 @@ public class Buttons extends JFrame
 			{
 				if (!onCirc)
 				{
-					// System.out.println("CERCLE ON !!");
 					onCirc = true;
 
 				}
 				else if (onCirc)
 				{
-					// System.out.println("CERCLE OFF !!");
 					onCirc = false;
 				}
-
 			}
 		});
 
@@ -200,13 +190,10 @@ public class Buttons extends JFrame
 			{
 				if (!onText)
 				{
-					// System.out.println("TEXTE ON !!");
 					onText = true;
-
 				}
 				else if (onText)
 				{
-					// System.out.println("TEXTE OFF !!");
 					onText = false;
 				}
 
@@ -222,13 +209,10 @@ public class Buttons extends JFrame
 			{
 				if (!onRect)
 				{
-					// System.out.println("RECTANGLE ON !!");
 					onRect = true;
-
 				}
 				else if (onRect)
 				{
-					// System.out.println("RECTANGLE OFF !!");
 					onRect = false;
 				}
 			}
@@ -275,43 +259,63 @@ public class Buttons extends JFrame
 		txtSoop.setBounds(12, 0, 320, 75);
 		layeredPane.add(txtSoop);
 		txtSoop.setColumns(10);
-		
+
 		positionY = new JTextField();
 		positionY.setColumns(10);
 		positionY.setBounds(238, 105, 30, 22);
 		layeredPane.add(positionY);
-		
+
 		JTextPane txtpnY = new JTextPane();
 		txtpnY.setText("Y :");
 		txtpnY.setEditable(false);
 		txtpnY.setBounds(207, 105, 30, 25);
 		layeredPane.add(txtpnY);
-	}
 
-	private static void addPopup(Component component, final JPopupMenu popup)
-	{
-		component.addMouseListener(new MouseAdapter()
+		JComboBox colorBox = new JComboBox(this.colorList);
+		colorBox.setBounds(165, 196, 156, 25);
+		layeredPane.add(colorBox);
+		colorBox.addActionListener(new ActionListener()
 		{
-			public void mousePressed(MouseEvent e)
+			public void actionPerformed(ActionEvent ev)
 			{
-				if (e.isPopupTrigger())
-				{
-					showMenu(e);
-				}
-			}
-
-			public void mouseReleased(MouseEvent e)
-			{
-				if (e.isPopupTrigger())
-				{
-					showMenu(e);
-				}
-			}
-
-			private void showMenu(MouseEvent e)
-			{
-				popup.show(e.getComponent(), e.getX(), e.getY());
+				fillColor = colorBox.getSelectedIndex();
 			}
 		});
+
+		JComboBox strokeColorBox = new JComboBox(this.colorList);
+		strokeColorBox.setBounds(165, 234, 156, 25);
+		layeredPane.add(strokeColorBox);
+		strokeColorBox.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ev)
+			{
+				strokeColor = strokeColorBox.getSelectedIndex();
+			}
+		});
+
+		JTextPane txtpnColor = new JTextPane();
+		txtpnColor.setText("Color :");
+		txtpnColor.setEditable(false);
+		txtpnColor.setBounds(92, 196, 57, 25);
+		layeredPane.add(txtpnColor);
+
+		JTextPane txtpnOutlineColor = new JTextPane();
+		txtpnOutlineColor.setText("Stroke Color :");
+		txtpnOutlineColor.setEditable(false);
+		txtpnOutlineColor.setBounds(58, 234, 91, 25);
+		layeredPane.add(txtpnOutlineColor);
+
+		JTextPane txtpnText = new JTextPane();
+		txtpnText.setText("Text :");
+		txtpnText.setEditable(false);
+		txtpnText.setBounds(21, 272, 40, 25);
+		layeredPane.add(txtpnText);
+
+		textField = new JTextField();
+		textField.setBounds(73, 272, 259, 52);
+		layeredPane.add(textField);
+		textField.setColumns(10);
+		txtSTR = textField.getText();
+
 	}
 }
