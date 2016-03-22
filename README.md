@@ -4,3 +4,4 @@ Idées pour modules supplémentaires:
 
 * Moteur Phyisque
 * Quadrillage zoomable/dezoomable
+* Multithreading
