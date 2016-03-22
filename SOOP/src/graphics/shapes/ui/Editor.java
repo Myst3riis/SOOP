@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import graphics.shapes.SCircle;
@@ -23,6 +24,8 @@ public class Editor extends JFrame
 	public Editor()
 	{
 		super("sOOP");
+		ImageIcon img = new ImageIcon("res\\images\\ico.gif");
+		super.setIconImage(img.getImage());
 
 		this.addWindowListener(new java.awt.event.WindowAdapter()
 		{

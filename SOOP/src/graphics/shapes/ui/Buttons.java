@@ -3,6 +3,7 @@ package graphics.shapes.ui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
@@ -30,6 +31,7 @@ import graphics.shapes.attributes.SelectionAttributes;
 //import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.text.html.StyleSheet;
+
 
 public class Buttons extends JFrame
 {
@@ -107,6 +109,10 @@ public class Buttons extends JFrame
 		frmPanel.setTitle("sOOP Panel");
 		frmPanel.setBounds(100, 100, 362, 421);
 		frmPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+
+		ImageIcon img = new ImageIcon("res\\images\\Panelico.gif");
+		frmPanel.setIconImage(img.getImage());
 
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setForeground(Color.WHITE);
