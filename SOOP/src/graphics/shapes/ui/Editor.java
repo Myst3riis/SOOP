@@ -91,6 +91,9 @@ public class Editor extends JFrame
 		self.pack();
 		self.model.updateBounds(self.sview.getGraphics());
 		self.setVisible(true);
-		System.out.println(self.model);
+		Buttons bt = new Buttons();
+		bt.affiche(args);
+
+		//System.out.println(self.model);
 	}
 }
