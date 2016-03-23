@@ -3,6 +3,7 @@ package graphics.shapes.ui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -16,7 +17,6 @@ import javax.swing.JLayeredPane;
 import javax.swing.JToggleButton;
 import javax.swing.JTextPane;
 import java.awt.Color;
-//import java.awt.Dimension;
 
 import javax.swing.SwingConstants;
 
@@ -28,7 +28,6 @@ import graphics.shapes.attributes.ColorAttributes;
 import graphics.shapes.attributes.FontAttributes;
 import graphics.shapes.attributes.OffsetAttributes;
 import graphics.shapes.attributes.SelectionAttributes;
-//import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.text.html.StyleSheet;
 
@@ -41,7 +40,7 @@ public class Buttons extends JFrame
 	private JTextField width;
 	private JTextField positionX;
 	private JTextField positionY;
-	private JTextField txtSoop;
+	private JLabel txtSoop;
 	private int fillColor;
 	private int strokeColor;
 	private String[] colorList =
@@ -107,19 +106,22 @@ public class Buttons extends JFrame
 		frmPanel = new JFrame();
 		frmPanel.setForeground(Color.WHITE);
 		frmPanel.setTitle("sOOP Panel");
-		frmPanel.setBounds(100, 100, 362, 421);
+		frmPanel.setBounds(100, 100, 362, 491);
 		frmPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
-		ImageIcon img = new ImageIcon("res\\images\\Panelico.gif");
-		frmPanel.setIconImage(img.getImage());
-
+		ImageIcon icon = new ImageIcon("res\\images\\Panelico.gif");
+		frmPanel.setIconImage(icon.getImage());
+		
+		
+		
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setForeground(Color.WHITE);
 		frmPanel.getContentPane().add(layeredPane, BorderLayout.CENTER);
 
+		
 		JButton btnNewButton = new JButton("Add shape");
-		btnNewButton.setBounds(117, 336, 97, 25);
+		btnNewButton.setBounds(117, 406, 97, 25);
 		layeredPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener()
 		{
@@ -168,7 +170,7 @@ public class Buttons extends JFrame
 
 		JToggleButton tglbtnCircle = new JToggleButton("Circle");
 		tglbtnCircle.setSelected(true);
-		tglbtnCircle.setBounds(117, 143, 91, 25);
+		tglbtnCircle.setBounds(117, 213, 91, 25);
 		layeredPane.add(tglbtnCircle);
 		tglbtnCircle.addActionListener(new ActionListener()
 		{
@@ -187,7 +189,7 @@ public class Buttons extends JFrame
 		});
 
 		JToggleButton tglbtnText = new JToggleButton("Text");
-		tglbtnText.setBounds(219, 143, 91, 25);
+		tglbtnText.setBounds(219, 213, 91, 25);
 		layeredPane.add(tglbtnText);
 		tglbtnText.addActionListener(new ActionListener()
 		{
@@ -206,7 +208,7 @@ public class Buttons extends JFrame
 		});
 
 		JToggleButton tglbtnRectangle = new JToggleButton("Rectangle");
-		tglbtnRectangle.setBounds(12, 143, 93, 25);
+		tglbtnRectangle.setBounds(12, 213, 93, 25);
 		layeredPane.add(tglbtnRectangle);
 		tglbtnRectangle.addActionListener(new ActionListener()
 		{
@@ -224,60 +226,63 @@ public class Buttons extends JFrame
 		});
 
 		height = new JTextField();
-		height.setBounds(92, 78, 57, 22);
+		height.setBounds(92, 148, 57, 22);
 		layeredPane.add(height);
 		height.setColumns(10);
 
 		width = new JTextField();
-		width.setBounds(251, 78, 62, 22);
+		width.setBounds(251, 148, 62, 22);
 		layeredPane.add(width);
 		width.setColumns(10);
 
 		JTextPane txtpnHeight = new JTextPane();
 		txtpnHeight.setEditable(false);
 		txtpnHeight.setText("Height :");
-		txtpnHeight.setBounds(35, 78, 57, 25);
+		txtpnHeight.setBounds(35, 148, 57, 25);
 		layeredPane.add(txtpnHeight);
 
 		JTextPane txtpnWidth = new JTextPane();
 		txtpnWidth.setEditable(false);
 		txtpnWidth.setText("Width :");
-		txtpnWidth.setBounds(197, 78, 57, 25);
+		txtpnWidth.setBounds(197, 148, 57, 25);
 		layeredPane.add(txtpnWidth);
 
 		positionX = new JTextField();
 		positionX.setColumns(10);
-		positionX.setBounds(165, 105, 30, 22);
+		positionX.setBounds(165, 175, 30, 22);
 		layeredPane.add(positionX);
 
 		JTextPane txtpnPosition = new JTextPane();
 		txtpnPosition.setText("Position :  X :");
 		txtpnPosition.setEditable(false);
-		txtpnPosition.setBounds(73, 105, 91, 25);
+		txtpnPosition.setBounds(73, 175, 91, 25);
 		layeredPane.add(txtpnPosition);
-
-		txtSoop = new JTextField();
-		txtSoop.setEditable(false);
+/*
+		txtSoop = new JLabel();
 		txtSoop.setFont(new Font("HelveticaNeueLT Std Lt", Font.PLAIN, 57));
 		txtSoop.setHorizontalAlignment(SwingConstants.CENTER);
 		txtSoop.setText("sOOP");
-		txtSoop.setBounds(12, 0, 320, 75);
+		txtSoop.setBounds(92, 0, 156, 75);
 		layeredPane.add(txtSoop);
-		txtSoop.setColumns(10);
+*/		
+		ImageIcon img = new ImageIcon("res\\images\\LOGOPetit.png");
+		JLabel image = new JLabel(img);
+		image.setBounds(92,0,156,135);//(251, 0, 90, 75);
+		layeredPane.add(image);
 
 		positionY = new JTextField();
 		positionY.setColumns(10);
-		positionY.setBounds(238, 105, 30, 22);
+		positionY.setBounds(238, 175, 30, 22);
 		layeredPane.add(positionY);
 
 		JTextPane txtpnY = new JTextPane();
 		txtpnY.setText("Y :");
 		txtpnY.setEditable(false);
-		txtpnY.setBounds(207, 105, 30, 25);
+		txtpnY.setBounds(207, 175, 30, 25);
 		layeredPane.add(txtpnY);
 
 		JComboBox colorBox = new JComboBox(this.colorList);
-		colorBox.setBounds(165, 196, 156, 25);
+		colorBox.setBounds(165, 266, 156, 25);
 		layeredPane.add(colorBox);
 		colorBox.addActionListener(new ActionListener()
 		{
@@ -288,7 +293,7 @@ public class Buttons extends JFrame
 		});
 
 		JComboBox strokeColorBox = new JComboBox(this.colorList);
-		strokeColorBox.setBounds(165, 234, 156, 25);
+		strokeColorBox.setBounds(165, 304, 156, 25);
 		layeredPane.add(strokeColorBox);
 		strokeColorBox.addActionListener(new ActionListener()
 		{
@@ -301,24 +306,26 @@ public class Buttons extends JFrame
 		JTextPane txtpnColor = new JTextPane();
 		txtpnColor.setText("Color :");
 		txtpnColor.setEditable(false);
-		txtpnColor.setBounds(92, 196, 57, 25);
+		txtpnColor.setBounds(92, 266, 57, 25);
 		layeredPane.add(txtpnColor);
 
 		JTextPane txtpnOutlineColor = new JTextPane();
 		txtpnOutlineColor.setText("Stroke Color :");
 		txtpnOutlineColor.setEditable(false);
-		txtpnOutlineColor.setBounds(58, 234, 91, 25);
+		txtpnOutlineColor.setBounds(58, 304, 91, 25);
 		layeredPane.add(txtpnOutlineColor);
 
 		JTextPane txtpnText = new JTextPane();
 		txtpnText.setText("Text :");
 		txtpnText.setEditable(false);
-		txtpnText.setBounds(21, 272, 40, 25);
+		txtpnText.setBounds(21, 342, 40, 25);
 		layeredPane.add(txtpnText);
 
 		textField = new JTextField();
-		textField.setBounds(73, 272, 259, 52);
+		textField.setBounds(73, 342, 259, 52);
 		layeredPane.add(textField);
 		textField.setColumns(10);
+		
+		
 	}
 }
