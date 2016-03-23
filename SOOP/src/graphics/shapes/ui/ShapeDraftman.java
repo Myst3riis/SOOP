@@ -93,9 +93,9 @@ public class ShapeDraftman implements ShapeVisitor
 	{
 		ColorAttributes color = (ColorAttributes) text.getAttributes("colors");
 		FontAttributes font = (FontAttributes) text.getAttributes("font");
-		
+
 		font.setFontRenderContext(this.g);
-		
+
 		int x = text.getBounds().x;
 		int y = text.getBounds().y;
 		int width = text.getBounds().width;
@@ -127,6 +127,8 @@ public class ShapeDraftman implements ShapeVisitor
 	@Override
 	public void visitCollection(SCollection coll)
 	{
+		for (Iterator<Shape> it = coll.iterator(); it.hasNext();)
+			it.next().accept(this);
 
 		ColorAttributes color = (ColorAttributes) coll.getAttributes("colors");
 		int x = coll.getBounds().x;
@@ -152,9 +154,6 @@ public class ShapeDraftman implements ShapeVisitor
 			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
 			g.drawRect(x, y, width, height);
 		}
-
-		for (Iterator<Shape> it = coll.iterator(); it.hasNext();)
-			it.next().accept(this);
 	}
 
 	public void SelectionSquares(Shape shape)
@@ -167,7 +166,7 @@ public class ShapeDraftman implements ShapeVisitor
 		int width = shape.getBounds().width;
 		int height = shape.getBounds().height;
 		int selectSquareSize = this.getSelectSquareSize();
-		
+
 		if (selection != null)
 			if (selection.isSelected())
 			{

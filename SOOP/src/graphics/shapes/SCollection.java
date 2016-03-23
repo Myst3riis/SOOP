@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import graphics.shapes.attributes.FontAttributes;
+import graphics.shapes.attributes.SelectionAttributes;
 
 public class SCollection extends Shape
 {
@@ -16,13 +17,15 @@ public class SCollection extends Shape
 	private int xmax = 0;
 	private int ymax = 0;
 	
+	private Point loc;
+	
 	private Rectangle rect = new Rectangle(this.xmin, this.ymin, this.xmax - this.xmin, this.ymax - this.ymin);
 
 	private ArrayList<Shape> arr = new ArrayList<Shape>();
 
 	public SCollection()
 	{
-
+		this.loc = new Point(xmin, ymin);
 	}
 
 	public Iterator<Shape> iterator()
@@ -82,9 +85,6 @@ public class SCollection extends Shape
 	public void setLoc(Point loc)
 	{
 		this.rect.setLocation(loc);
-
-		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
-			it.next().setLoc(loc);
 	}
 
 	@Override
@@ -96,28 +96,28 @@ public class SCollection extends Shape
 	@Override
 	public void accept(ShapeVisitor sv)
 	{
-		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
-			it.next().accept(sv);
+		sv.visitCollection(this);
 	}
 
 	@Override
 	public void translate(int dx, int dy)
 	{
-		this.rect.translate(dx, dy);
-
-		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
-			it.next().translate(dx, dy);
+		this.loc.setLocation(dx, dy);
+		this.setLoc(this.loc);
+		// On dissocie les méthodes de translate des SCollections de leurs formes.
 	}
 
 
 	public String toString()
 	{
 		StringBuilder res = new StringBuilder("Collection");
+		/*res.append(", ");
+		res.append(this.getBounds().toString());*/
 		res.append(", ");
-		res.append(this.getBounds().toString());
-		res.append("[\n");
+		res.append("is selected: " + ((SelectionAttributes)this.getAttributes("selection")).isSelected());
+		res.append("[");
 		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
-			res.append(it.next().toString() + "\n");
+			res.append(it.next().toString());
 		res.append("]EndCollection");
 		return res.toString();
 	}

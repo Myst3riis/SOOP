@@ -72,17 +72,21 @@ public class Editor extends JFrame
 		t.addAttributes(new OffsetAttributes());
 		this.model.add(t);
 
-		/*
-		 * SCollection sc = new SCollection(); sc.addAttributes(new
-		 * SelectionAttributes()); sc.addAttributes(new OffsetAttributes()); r =
-		 * new SRectangle(new Point(30, 40), 30, 30); r.addAttributes(new
-		 * ColorAttributes(true, true, Color.MAGENTA, Color.BLUE));
-		 * r.addAttributes(new SelectionAttributes()); sc.add(r); c = new
-		 * SCircle(new Point(150, 100), 20); c.addAttributes(new
-		 * ColorAttributes(true, true, Color.BLUE, Color.DARK_GRAY));
-		 * c.addAttributes(new SelectionAttributes()); sc.add(c);
-		 * this.model.add(sc);
-		 */
+		SCollection sc = new SCollection();
+		sc.addAttributes(new ColorAttributes(false, true, Color.BLACK, Color.BLACK));
+		sc.addAttributes(new SelectionAttributes());
+		sc.addAttributes(new OffsetAttributes());
+		r = new SRectangle(new Point(20,30),30,30);
+		r.addAttributes(new ColorAttributes(true, false,Color.MAGENTA,Color.BLUE));
+		r.addAttributes(new SelectionAttributes());
+		r.addAttributes(new OffsetAttributes());
+		sc.add(r);
+		c = new SCircle(new Point(150,100),20);
+		c.addAttributes(new ColorAttributes(false, true,Color.BLUE,Color.DARK_GRAY));
+		c.addAttributes(new SelectionAttributes());
+		c.addAttributes(new OffsetAttributes());
+		sc.add(c);
+		this.model.add(sc);
 	}
 
 	public static void main(String[] args)
@@ -93,7 +97,6 @@ public class Editor extends JFrame
 		bt.affiche(self.model, self.sview);
 		self.model.updateBounds(self.sview.getGraphics());
 		self.setVisible(true);
-
-		// System.out.println(self.model);
+		//System.out.println(self.model);
 	}
 }

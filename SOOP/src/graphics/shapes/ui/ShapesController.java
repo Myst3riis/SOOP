@@ -22,8 +22,10 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 	private SCollection model;
 	private ShapesView sview;
 
-	private int lastShapeRegisteredeX; // L'abscisse du curseur pour le drag multiple
-	private int lastShapeRegisteredeY; // L'ordonnée du curseur pour le drag multiple
+	private int lastShapeRegisteredeX; // L'abscisse du curseur pour le drag
+										// multiple
+	private int lastShapeRegisteredeY; // L'ordonnée du curseur pour le drag
+										// multiple
 
 	private boolean ctrlPressed = false;
 	private boolean shiftDown;
@@ -70,19 +72,49 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 				this.shapeRegistered = true;
 				this.lastShapeRegisteredeX = e.getX();
 				this.lastShapeRegisteredeY = e.getY();
-				
+
 				if (shiftDown)
 				{
 					if (!this.shapes.contains(shape))
 					{
 						this.sview.paintComponent(this.sview.getGraphics());
 						this.shapes.add(shape);
+
+						/*
+						 * Si la forme "pressée" est une collection ajoute
+						 * l'ensemble de ses formes à elle à la liste.
+						 */
+						/*
+						 * En outre on s'assure que les formes ajoutées ici sont
+						 * rajoutées après la collection.
+						 */
+
+						if (shape.getClass().getSimpleName().equals("SCollection"))
+							for (Iterator<Shape> it2 = ((SCollection) shape).iterator(); it2.hasNext();)
+							{
+								Shape shape2 = it2.next();
+								SelectionAttributes selection2 = (SelectionAttributes) shape2
+										.getAttributes("selection");
+								selection2.select();
+								this.shapes.add(shape2);
+								this.sview.getShapeDraftman().SelectionSquares(shape2);
+							}
 						selection.select();
 						this.sview.getShapeDraftman().SelectionSquares(shape);
 					}
 					else
 					{
 						this.shapes.remove(shape);
+						if (shape.getClass().getSimpleName().equals("SCollection"))
+							for (Iterator<Shape> it2 = ((SCollection) shape).iterator(); it2.hasNext();)
+							{
+								Shape shape2 = it2.next();
+								SelectionAttributes selection2 = (SelectionAttributes) shape2
+										.getAttributes("selection");
+								selection2.unselect();
+								this.shapes.remove(shape2);
+								this.sview.getShapeDraftman().SelectionSquares(shape2);
+							}
 						selection.unselect();
 						this.sview.getShapeDraftman().SelectionSquares(shape);
 						this.sview.paintComponent(this.sview.getGraphics());
@@ -94,6 +126,18 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 					{
 						this.sview.paintComponent(this.sview.getGraphics());
 						this.shapes.add(shape);
+
+						if (shape.getClass().getSimpleName().equals("SCollection"))
+							for (Iterator<Shape> it2 = ((SCollection) shape).iterator(); it2.hasNext();)
+							{
+								Shape shape2 = it2.next();
+								SelectionAttributes selection2 = (SelectionAttributes) shape2
+										.getAttributes("selection");
+								selection2.select();
+								this.shapes.add(shape2);
+								this.sview.getShapeDraftman().SelectionSquares(shape2);
+							}
+
 						selection.select();
 						this.sview.getShapeDraftman().SelectionSquares(shape);
 					}
@@ -104,25 +148,72 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 						this.shapes.remove(0);
 						this.sview.paintComponent(this.sview.getGraphics());
 						this.shapes.add(shape);
+						
+						if (shape.getClass().getSimpleName().equals("SCollection"))
+							for (Iterator<Shape> it2 = ((SCollection) shape).iterator(); it2.hasNext();)
+							{
+								Shape shape2 = it2.next();
+								SelectionAttributes selection2 = (SelectionAttributes) shape2
+										.getAttributes("selection");
+								selection2.select();
+								this.shapes.add(shape2);
+								this.sview.getShapeDraftman().SelectionSquares(shape2);
+							}
+						
+						selection.select();
+						this.sview.getShapeDraftman().SelectionSquares(shape);
+					}
+
+					else if (this.shapes.get(0).getClass().getSimpleName().equals("SCollection"))
+					{
+
+						for (Iterator<Shape> it2 = ((SCollection) shapes.get(0)).iterator(); it2.hasNext();)
+						{
+							Shape shape2 = it2.next();
+							SelectionAttributes selection2 = (SelectionAttributes) shape2.getAttributes("selection");
+							selection2.unselect();
+							this.shapes.remove(shape2);
+							this.sview.getShapeDraftman().SelectionSquares(shape2);
+						}
+
+						this.shapes.remove(0);
+						this.shapes.add(shape);
+
+						if (shape.getClass().getSimpleName().equals("SCollection"))
+							for (Iterator<Shape> it2 = ((SCollection) shape).iterator(); it2.hasNext();)
+							{
+								Shape shape2 = it2.next();
+								SelectionAttributes selection2 = (SelectionAttributes) shape2
+										.getAttributes("selection");
+								selection2.select();
+								this.shapes.add(shape2);
+								this.sview.getShapeDraftman().SelectionSquares(shape2);
+							}
+
 						selection.select();
 						this.sview.getShapeDraftman().SelectionSquares(shape);
 					}
 				}
 			}
 		}
-		
-		if(shapeRegistered) {
-			for(Iterator<Shape> it = this.shapes.iterator(); it.hasNext();) {
+
+		if (shapeRegistered)
+		{
+			for (Iterator<Shape> it = this.shapes.iterator(); it.hasNext();)
+			{
 				Shape shape = it.next();
-				((OffsetAttributes)shape.getAttributes("offset")).setOffsetX(this.lastShapeRegisteredeX- shape.getBounds().x);
-				((OffsetAttributes)shape.getAttributes("offset")).setOffsetY(this.lastShapeRegisteredeY - shape.getBounds().y);
+				((OffsetAttributes) shape.getAttributes("offset"))
+						.setOffsetX(this.lastShapeRegisteredeX - shape.getBounds().x);
+				((OffsetAttributes) shape.getAttributes("offset"))
+						.setOffsetY(this.lastShapeRegisteredeY - shape.getBounds().y);
 			}
 		}
 
 		if (!shiftDown && !shapeRegistered)
 		{
-			int size = this.shapes.size(); // La taille de la liste diminue aussi
-										// !!!!
+			int size = this.shapes.size(); // La taille de la liste diminue
+											// aussi
+											// !!!!
 			for (int i = size - 1; i >= 0; i--)
 			{ // Il faut bien savoir parcourir une liste en train d'être
 				// dimunuée !!
@@ -132,6 +223,7 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 				this.sview.paintComponent(this.sview.getGraphics());
 			}
 		}
+		System.out.println(this.shapes);
 	}
 
 	public void mouseReleased(MouseEvent e)
@@ -156,7 +248,7 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 
 	public void mouseDragged(MouseEvent evt)
 	{
-		for (Iterator<Shape> it = this.model.iterator(); it.hasNext();)
+		for (Iterator<Shape> it = this.shapes.iterator(); it.hasNext();)
 		{
 
 			Shape shape = it.next();
@@ -183,10 +275,12 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 				g.setColor(Color.WHITE);
 				g.drawRect(x, y, width, height);
 
-				shape.translate(dx - ((OffsetAttributes)shape.getAttributes("offset")).getOffsetX(), dy - ((OffsetAttributes)shape.getAttributes("offset")).getOffsetY());
-
+				shape.translate(dx - ((OffsetAttributes) shape.getAttributes("offset")).getOffsetX(),
+						dy - ((OffsetAttributes) shape.getAttributes("offset")).getOffsetY());
+				// System.out.println(shape);
 				this.sview.paintComponent(this.sview.getGraphics());
 				this.sview.getShapeDraftman().SelectionSquares(shape);
+				selection.unDrag();
 			}
 		}
 	}
