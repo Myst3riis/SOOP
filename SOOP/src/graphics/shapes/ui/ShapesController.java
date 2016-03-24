@@ -148,7 +148,7 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 						this.shapes.remove(0);
 						this.sview.paintComponent(this.sview.getGraphics());
 						this.shapes.add(shape);
-						
+
 						if (shape.getClass().getSimpleName().equals("SCollection"))
 							for (Iterator<Shape> it2 = ((SCollection) shape).iterator(); it2.hasNext();)
 							{
@@ -159,7 +159,7 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 								this.shapes.add(shape2);
 								this.sview.getShapeDraftman().SelectionSquares(shape2);
 							}
-						
+
 						selection.select();
 						this.sview.getShapeDraftman().SelectionSquares(shape);
 					}
@@ -223,7 +223,6 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 				this.sview.paintComponent(this.sview.getGraphics());
 			}
 		}
-		System.out.println(this.shapes);
 	}
 
 	public void mouseReleased(MouseEvent e)
@@ -287,10 +286,6 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 
 	public void keyTyped(KeyEvent evt)
 	{
-		if (evt.getKeyCode() == 127)
-		{
-			// Supprimer une forme
-		}
 	}
 
 	public void keyPressed(KeyEvent evt)
@@ -301,8 +296,8 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 		if (evt.getKeyCode() == 16 && !shiftDown)
 		{
 			this.shiftDown = true;
-			System.out.println("ShiftDown");
 		}
+
 	}
 
 	public void keyReleased(KeyEvent evt)
@@ -313,7 +308,31 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 		if (evt.getKeyCode() == 16 && shiftDown)
 		{
 			this.shiftDown = false;
-			System.out.println("ShiftUp");
+		}
+		if (evt.getKeyCode() == 127)
+		{
+			int size = this.model.size();
+			for (int i = size - 1; i >= 0; i--)
+			{
+				if(((SelectionAttributes) this.model.get(i).getAttributes("selection")).isSelected()) {
+					Graphics g = this.sview.getGraphics();
+					int selectSquareSize = this.sview.getShapeDraftman().getSelectSquareSize();
+					int x = this.model.get(i).getBounds().x;
+					int y = this.model.get(i).getBounds().y;
+					int width = this.model.get(i).getBounds().width;
+					int height = this.model.get(i).getBounds().height;
+					/* Ici on cache le fond de la l'ancienne forme */
+					g.clearRect(x, y, width, height);
+					g.clearRect(x - selectSquareSize, y - selectSquareSize, selectSquareSize, selectSquareSize);
+					g.clearRect(x + width, y + height, selectSquareSize, selectSquareSize);
+					/* Ici on cache le contour de l'ancienne forme */
+					g.setColor(Color.WHITE);
+					g.drawRect(x, y, width, height);
+					this.model.remove(this.model.get(i));
+					this.sview.paintComponent(this.sview.getGraphics());
+				}
+			}
+			this.sview.paintComponent(this.sview.getGraphics());
 		}
 	}
 

@@ -106,7 +106,20 @@ public class SCollection extends Shape
 		this.setLoc(this.loc);
 		// On dissocie les méthodes de translate des SCollections de leurs formes.
 	}
+	
+	public void remove(Shape shape) {
+		this.arr.remove(shape);
+	}
+	
+	public int size()
+	{
+		return this.arr.size();
+	}
 
+	public Shape get(int i)
+	{
+		return this.arr.get(i);
+	}
 
 	public String toString()
 	{
@@ -121,5 +134,4 @@ public class SCollection extends Shape
 		res.append("]EndCollection");
 		return res.toString();
 	}
-
 }

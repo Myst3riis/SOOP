@@ -15,6 +15,7 @@ public class Grid
 	private int xOffset = 0;
 	private int yOffset = 0;
 	private Graphics g;
+	private int coordDensity = 3;
 
 	public Grid(Graphics g)
 	{
@@ -27,10 +28,14 @@ public class Grid
 		for (int i = 0; i < this.LIMITX / this.spacing; i++)
 		{
 			this.g.drawLine(i * this.spacing, this.yOffset, i * this.spacing, this.LIMITY);
+			if(i * this.spacing % this.coordDensity  * this.spacing == 0 && i * this.spacing > 0)
+				this.g.drawString(Integer.toString(i * this.spacing), i * this.spacing - this.g.getFontMetrics().stringWidth(Integer.toString(i * this.spacing)) / 2, this.yOffset + this.spacing);
 		}
 		for (int i = 0; i < this.LIMITY / this.spacing; i++)
 		{
 			this.g.drawLine(this.xOffset, i * this.spacing, this.LIMITX, i * this.spacing);
+			if(i * this.spacing % this.coordDensity  * this.spacing == 0 && i * this.spacing > 0)
+				this.g.drawString(Integer.toString(i * this.spacing), this.xOffset, i * this.spacing + this.g.getFontMetrics().getHeight() / 3);
 		}
 	}
 
