@@ -1,6 +1,6 @@
 # SOOP
-SOOP Project pour AOO.
-Le projet consiste en un logiciel de dessin et de composition très basique écrit en Java 1.8.
+SOOP Project pour AOO (inachevé)
+Le projet consiste en un logiciel de dessin et de composition très basique écrit en Java 1.8. 
 
 Idées pour modules supplémentaires:
 
