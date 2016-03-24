@@ -4,7 +4,7 @@ Le projet consiste en un logiciel de dessin et de composition très basique écr
 
 Idées pour modules supplémentaires:
 
-* Moteur Phyisque
+* Moteur Physique
 * Quadrillage zoomable/dezoomable
-* Refaire l'interface graphique afin qu'il soit plus intuitif pour l'utilisateur.
-* Multithreading
+* Refaire l'interface graphique afin qu'il soit plus intuitif pour l'utilisateur
+* Multithreading: le logiciel utiliserait two threads, un pour l'affichage des formes et le deuxième pour les appels de méthodes.
