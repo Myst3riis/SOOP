@@ -61,6 +61,7 @@ public class Editor extends JFrame
 		this.model.add(c);
 
 		SCircle c2 = new SCircle(new Point(150, 50), 100);
+		c2.addAttributes(new ColorAttributes(true, true,Color.RED,Color.DARK_GRAY));
 		c2.addAttributes(new SelectionAttributes());
 		c2.addAttributes(new OffsetAttributes());
 		this.model.add(c2);
