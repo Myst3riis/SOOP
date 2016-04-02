@@ -1,7 +1,5 @@
 package graphics.shapes.attributes;
 
-import graphics.shapes.Shape;
-
 public class SelectionAttributes extends Attributes
 {
 	public static final String ID = "selection";

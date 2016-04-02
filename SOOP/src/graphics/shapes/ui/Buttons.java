@@ -152,14 +152,13 @@ public class Buttons extends JFrame
 					a.addAttributes(new SelectionAttributes());
 					a.addAttributes(new OffsetAttributes());
 					model.add(a);
-					
 				}
 				else
 				{
 					System.out.println("SELECT ONE SHAPE !!");
 				}
-				sview.paintComponent(sview.getGraphics());
 				model.updateBounds(sview.getGraphics());
+				sview.paintComponent(sview.getGraphics());
 			}
 		});
 

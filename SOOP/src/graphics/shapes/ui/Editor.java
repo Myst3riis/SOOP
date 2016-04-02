@@ -53,26 +53,26 @@ public class Editor extends JFrame
 		r.addAttributes(new SelectionAttributes());
 		r.addAttributes(new OffsetAttributes());
 		this.model.add(r);
-
+		
 		SCircle c = new SCircle(new Point(100, 100), 25);
 		c.addAttributes(new ColorAttributes(true, true, Color.BLUE, Color.YELLOW));
 		c.addAttributes(new SelectionAttributes());
 		c.addAttributes(new OffsetAttributes());
 		this.model.add(c);
-
+		
 		SCircle c2 = new SCircle(new Point(150, 50), 100);
-		c2.addAttributes(new ColorAttributes(true, true,Color.RED,Color.DARK_GRAY));
+		c2.addAttributes(new ColorAttributes(true, true, Color.RED, Color.DARK_GRAY));
 		c2.addAttributes(new SelectionAttributes());
 		c2.addAttributes(new OffsetAttributes());
 		this.model.add(c2);
-
+		
 		SText t = new SText(new Point(100, 100), "hello");
 		t.addAttributes(new ColorAttributes(true, true, Color.YELLOW, Color.BLUE));
 		t.addAttributes(new FontAttributes());
 		t.addAttributes(new SelectionAttributes());
 		t.addAttributes(new OffsetAttributes());
 		this.model.add(t);
-
+		
 		SCollection sc = new SCollection();
 		sc.addAttributes(new ColorAttributes(false, true, Color.BLACK, Color.BLACK));
 		sc.addAttributes(new SelectionAttributes());
@@ -88,6 +88,7 @@ public class Editor extends JFrame
 		c.addAttributes(new OffsetAttributes());
 		sc.add(c);
 		this.model.add(sc);
+		
 	}
 
 	public static void main(String[] args)

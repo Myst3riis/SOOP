@@ -149,11 +149,6 @@ public class ShapeDraftman implements ShapeVisitor
 				g.drawRect(x, y, width, height);
 			}
 		}
-		else
-		{
-			g.setColor(DEFAULTCOLORATTRIBUTES.strokedColor);
-			g.drawRect(x, y, width, height);
-		}
 	}
 
 	public void SelectionSquares(Shape shape)

@@ -40,9 +40,16 @@ public class SCollection extends Shape
 
 	public void updateBounds(Graphics g)
 	{
+		/* Il faut remettre les dimensions à leur valeur par défaut pour prendre en compte les ajouts et suppressions de formes. */
+		this.xmin = 2000;
+		this.ymin = 2000;
+
+		this.xmax = 0;
+		this.ymax = 0;
+		
 		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
 		{
-
+	
 			Shape shape = it.next();
 
 			if (shape.getClass().getSimpleName().equals("SText"))
@@ -123,15 +130,15 @@ public class SCollection extends Shape
 
 	public String toString()
 	{
-		StringBuilder res = new StringBuilder("Collection");
-		/*res.append(", ");
-		res.append(this.getBounds().toString());*/
+		StringBuilder res = new StringBuilder(" Collection");
+		res.append(", ");
+		res.append(this.getBounds().toString());
 		res.append(", ");
 		res.append("is selected: " + ((SelectionAttributes)this.getAttributes("selection")).isSelected());
 		res.append("[");
 		for (Iterator<Shape> it = this.iterator(); it.hasNext();)
 			res.append(it.next().toString());
-		res.append("]EndCollection");
+		res.append("]EndCollection ");
 		return res.toString();
 	}
 }

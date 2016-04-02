@@ -37,25 +37,9 @@ public abstract class Shape
 		StringBuilder res = new StringBuilder();
 		res.append('[');
 		res.append(this.getClass().getSimpleName());
-		/*res.append(", ");
-		res.append(this.getBounds().toString());*/
 		res.append(", ");
 		res.append("is selected: " + ((SelectionAttributes)this.getAttributes("selection")).isSelected());
-		/*
-		boolean colors = (this.getAttributes("colors") != null);
-		res.append("ColorAttributes " + colors);
-		res.append(", ");
-		boolean font = (this.getAttributes("font") != null);
-		res.append("FontAttributes " + font);
-		res.append(", ");
-		boolean selection = (this.getAttributes("selection") != null);
-		res.append("SelectionAttributes " + selection);
-		res.append(", ");
-		boolean offset = (this.getAttributes("offset") != null);
-		res.append("OffsetAttributes " + offset);
-		*/
 		res.append(']');
 		return res.toString();
 	}
-
 }
