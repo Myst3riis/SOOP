@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
-import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,8 +16,6 @@ import javax.swing.JLayeredPane;
 import javax.swing.JToggleButton;
 import javax.swing.JTextPane;
 import java.awt.Color;
-
-import javax.swing.SwingConstants;
 
 import graphics.shapes.SCircle;
 import graphics.shapes.SCollection;
@@ -40,7 +37,6 @@ public class Buttons extends JFrame
 	private JTextField width;
 	private JTextField positionX;
 	private JTextField positionY;
-	private JLabel txtSoop;
 	private int fillColor;
 	private int strokeColor;
 	private String[] colorList =
@@ -143,7 +139,6 @@ public class Buttons extends JFrame
 				{
 					txtSTR = textField.getText();
 					SText t2 = new SText(new Point(getPositionX(), getPositionY()), txtSTR);
-					System.out.println(txtSTR);
 					t2.addAttributes(new ColorAttributes(true, true, fColor, sColor));
 					t2.addAttributes(new FontAttributes());
 					t2.addAttributes(new SelectionAttributes());
@@ -257,17 +252,10 @@ public class Buttons extends JFrame
 		txtpnPosition.setEditable(false);
 		txtpnPosition.setBounds(73, 175, 91, 25);
 		layeredPane.add(txtpnPosition);
-/*
-		txtSoop = new JLabel();
-		txtSoop.setFont(new Font("HelveticaNeueLT Std Lt", Font.PLAIN, 57));
-		txtSoop.setHorizontalAlignment(SwingConstants.CENTER);
-		txtSoop.setText("sOOP");
-		txtSoop.setBounds(92, 0, 156, 75);
-		layeredPane.add(txtSoop);
-*/		
+		
 		ImageIcon img = new ImageIcon("res\\images\\LOGOPetit.png");
 		JLabel image = new JLabel(img);
-		image.setBounds(92,0,156,135);//(251, 0, 90, 75);
+		image.setBounds(92,0,156,135);
 		layeredPane.add(image);
 
 		positionY = new JTextField();
@@ -324,8 +312,6 @@ public class Buttons extends JFrame
 		textField = new JTextField();
 		textField.setBounds(73, 342, 259, 52);
 		layeredPane.add(textField);
-		textField.setColumns(10);
-		
-		
+		textField.setColumns(10);		
 	}
 }

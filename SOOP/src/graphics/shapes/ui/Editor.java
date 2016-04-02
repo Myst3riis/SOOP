@@ -98,6 +98,5 @@ public class Editor extends JFrame
 		bt.affiche(self.model, self.sview);
 		self.model.updateBounds(self.sview.getGraphics());
 		self.setVisible(true);
-		//System.out.println(self.model);
 	}
 }

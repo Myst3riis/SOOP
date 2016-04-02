@@ -276,7 +276,6 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 
 				shape.translate(dx - ((OffsetAttributes) shape.getAttributes("offset")).getOffsetX(),
 						dy - ((OffsetAttributes) shape.getAttributes("offset")).getOffsetY());
-				// System.out.println(shape);
 				this.sview.paintComponent(this.sview.getGraphics());
 				this.sview.getShapeDraftman().SelectionSquares(shape);
 				selection.unDrag();
