@@ -14,7 +14,6 @@ import java.util.Iterator;
 
 import graphics.shapes.SCollection;
 import graphics.shapes.Shape;
-import graphics.shapes.attributes.ColorAttributes;
 import graphics.shapes.attributes.OffsetAttributes;
 import graphics.shapes.attributes.SelectionAttributes;
 
@@ -95,7 +94,7 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 					}
 					else
 					{
-						if (shape.getClass().getSimpleName().equals("SCollection")) 
+						if (shape.getClass().getSimpleName().equals("SCollection"))
 						{
 							for (Iterator<Shape> it2 = ((SCollection) shape).iterator(); it2.hasNext();)
 							{
@@ -108,7 +107,7 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 								this.sview.getShapeDraftman().SelectionSquares(shape2);
 							}
 						}
-						
+
 						selection.unDrag();
 						selection.unselect();
 						this.shapes.remove(shape);
@@ -144,9 +143,8 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 						for (int i = size - 1; i >= 0; i--)
 						{
 							Shape shape2 = this.shapes.get(i);
-							SelectionAttributes selection2 = (SelectionAttributes) shape2
-									.getAttributes("selection");
-							
+							SelectionAttributes selection2 = (SelectionAttributes) shape2.getAttributes("selection");
+
 							if (!selection.isSelected())
 							{
 								selection2.unDrag();
@@ -155,11 +153,11 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 								this.sview.getShapeDraftman().SelectionSquares(shape2);
 							}
 						}
-						
+
 						if (!this.shapes.contains(shape))
 						{
 							this.shapes.add(shape);
-							
+
 							if (shape.getClass().getSimpleName().equals("SCollection"))
 								for (Iterator<Shape> it2 = ((SCollection) shape).iterator(); it2.hasNext();)
 								{
@@ -170,7 +168,7 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 									this.shapes.add(shape2);
 									this.sview.getShapeDraftman().SelectionSquares(shape2);
 								}
-							
+
 							selection.select();
 							this.sview.getShapeDraftman().SelectionSquares(shape);
 							this.sview.paintComponent(this.sview.getGraphics());
@@ -198,13 +196,13 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 			for (int i = size2 - 1; i >= 0; i--)
 			{
 				Shape shape = this.shapes.get(i);
-				SelectionAttributes selection = (SelectionAttributes)shape.getAttributes("selection");
+				SelectionAttributes selection = (SelectionAttributes) shape.getAttributes("selection");
 				selection.unselect();
 				selection.unDrag();
 				this.sview.getShapeDraftman().SelectionSquares(shape);
 				this.shapes.remove(shape);
 			}
-			
+
 			/* Remise à zéro */
 			this.ctrlPressed = false;
 			this.shiftDown = false;
@@ -212,12 +210,6 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 			this.shapesMoved = false;
 			this.sview.paintComponent(this.sview.getGraphics());
 		}
-	}
-
-	private Object change()
-	{
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public void mouseReleased(MouseEvent e)
@@ -289,14 +281,39 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 	}
 
 	public void keyPressed(KeyEvent evt)
-	{
+	{	
+		if (evt.getKeyCode() == 65 && evt.isControlDown())
+		{
+			for(Iterator<Shape> it = this.model.iterator(); it.hasNext();)
+			{
+				Shape shape = it.next();
+				SelectionAttributes selection = (SelectionAttributes)shape.getAttributes("selection");
+				
+				if (!this.shapes.contains(shape))
+				{
+					this.sview.getShapeDraftman().updateGraphics(this.sview.getGraphics());
+					this.shapes.add(shape);
+					if (shape.getClass().getSimpleName().equals("SCollection"))
+						for (Iterator<Shape> it2 = ((SCollection) shape).iterator(); it2.hasNext();)
+						{
+							Shape shape2 = it2.next();
+							SelectionAttributes selection2 = (SelectionAttributes) shape2
+									.getAttributes("selection");
+							selection2.select();
+							this.shapes.add(shape2);
+							this.sview.getShapeDraftman().SelectionSquares(shape2);
+						}
+					selection.select();
+					this.sview.getShapeDraftman().SelectionSquares(shape);
+				}
+			}
+		}
+		
 		if (evt.getKeyCode() == 17 && !ctrlPressed)
 			this.ctrlPressed = true;
 
 		if (evt.getKeyCode() == 16 && !shiftDown)
-		{
 			this.shiftDown = true;
-		}
 	}
 
 	public void keyReleased(KeyEvent evt)
