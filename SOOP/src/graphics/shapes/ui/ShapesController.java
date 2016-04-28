@@ -120,7 +120,7 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 					if (this.shapes.isEmpty())
 					{
 						// Le draftman doit être mis à jour mais on a pas besoin
-						// de réafficher toutes les formes. 
+						// de réafficher toutes les formes. */
 						this.sview.getShapeDraftman().updateGraphics(this.sview.getGraphics());
 						if (shape.getClass().getSimpleName().equals("SCollection"))
 							for (Iterator<Shape> it2 = ((SCollection) shape).iterator(); it2.hasNext();)
@@ -339,11 +339,11 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 					int y = this.model.get(i).getBounds().y;
 					int width = this.model.get(i).getBounds().width;
 					int height = this.model.get(i).getBounds().height;
-					// Ici on cache le fond de la l'ancienne forme 
+					/* Ici on cache le fond de la l'ancienne forme */
 					g.clearRect(x, y, width, height);
 					g.clearRect(x - selectSquareSize, y - selectSquareSize, selectSquareSize, selectSquareSize);
 					g.clearRect(x + width, y + height, selectSquareSize, selectSquareSize);
-					// Ici on cache le contour de l'ancienne forme 
+					/* Ici on cache le contour de l'ancienne forme */
 					g.setColor(Color.WHITE);
 					g.drawRect(x, y, width, height);
 					this.model.remove(this.model.get(i));
