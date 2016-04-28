@@ -1,8 +1,5 @@
 package graphics.shapes;
 
-//import graphics.shapes.attributes.Attributes;
-//import graphics.shapes.attributes.ColorAttributes;
-//import graphics.shapes.attributes.SelectionAttributes;
 
 import java.awt.Point;
 import java.awt.Rectangle;
