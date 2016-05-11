@@ -17,7 +17,7 @@ import graphics.shapes.Shape;
 import graphics.shapes.attributes.OffsetAttributes;
 import graphics.shapes.attributes.SelectionAttributes;
 
-public class ShapesController implements MouseListener, MouseMotionListener, KeyListener, MouseWheelListener
+public class ShapesController implements MouseListener, MouseMotionListener, KeyListener//, MouseWheelListener
 {
 	private SCollection model;
 	private ShapesView sview;
@@ -212,25 +212,15 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 		}
 	}
 
-	public void mouseReleased(MouseEvent e)
-	{
-	}
+	public void mouseReleased(MouseEvent e){}
 
-	public void mouseClicked(MouseEvent e)
-	{
-	}
+	public void mouseClicked(MouseEvent e){}
 
-	public void mouseEntered(MouseEvent e)
-	{
-	}
+	public void mouseEntered(MouseEvent e){}
 
-	public void mouseExited(MouseEvent e)
-	{
-	}
+	public void mouseExited(MouseEvent e){}
 
-	public void mouseMoved(MouseEvent evt)
-	{
-	}
+	public void mouseMoved(MouseEvent evt){}
 
 	public void mouseDragged(MouseEvent evt)
 	{
@@ -276,9 +266,7 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 		}
 	}
 
-	public void keyTyped(KeyEvent evt)
-	{
-	}
+	public void keyTyped(KeyEvent evt){}
 
 	public void keyPressed(KeyEvent evt)
 	{	
@@ -353,13 +341,13 @@ public class ShapesController implements MouseListener, MouseMotionListener, Key
 			this.sview.paintComponent(this.sview.getGraphics());
 		}
 	}
-
+/*
 	public void mouseWheelMoved(MouseWheelEvent e)
 	{
 		if (this.ctrlPressed)
 			this.sview.getGrid().updateZoomLevel(e.getWheelRotation() * 2);
 	}
-
+*/
 	public String toString()
 	{
 		StringBuilder res = new StringBuilder("shapes: \n");

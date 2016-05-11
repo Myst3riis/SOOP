@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.9" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="graphics.ui.View" project="SOOP" file="/SOOP/src/graphics/ui/View.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="432" y="128"/>    
+  <class id="1" language="java" name="graphics.shapes.ui.ShapesView" project="SOOP" 
+    file="/SOOP/src/graphics/shapes/ui/ShapesView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="691" y="605"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="graphics.shapes.attributes.Attributes" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/attributes/Attributes.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="105" width="157" x="1332" y="838"/>    
+  <class id="2" language="java" name="graphics.ui.View" project="SOOP" file="/SOOP/src/graphics/ui/View.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="253" y="595"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="graphics.shapes.ui.Buttons" project="SOOP" 
     file="/SOOP/src/graphics/shapes/ui/Buttons.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="448" width="239" x="1118" y="-66"/>    
+    <position height="-1" width="-1" x="442" y="193"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,319 +30,117 @@
   </class>  
   <class id="4" language="java" name="graphics.shapes.ui.Editor" project="SOOP" 
     file="/SOOP/src/graphics/shapes/ui/Editor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1494" y="56"/>    
+    <position height="-1" width="-1" x="670" y="72"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="graphics.shapes.SCircle" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/SCircle.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="250" width="173" x="1529" y="838"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="6" language="java" name="graphics.shapes.ShapeVisitor" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/ShapeVisitor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="142" width="207" x="678" y="1290"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <class id="7" language="java" name="graphics.shapes.SText" project="SOOP" file="/SOOP/src/graphics/shapes/SText.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="250" width="173" x="1742" y="838"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="graphics.shapes.ui.Grid" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/ui/Grid.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="358" width="203" x="607" y="838"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="graphics.shapes.SCollection" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/SCollection.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="412" width="195" x="1097" y="838"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="graphics.shapes.ui.ShapesView" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/ui/ShapesView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="178" width="296" x="780" y="422"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="graphics.shapes.attributes.FontAttributes" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/attributes/FontAttributes.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="250" width="242" x="1246" y="1290"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="graphics.shapes.attributes.OffsetAttributes" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/attributes/OffsetAttributes.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="232" width="157" x="1528" y="1290"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="13" language="java" name="graphics.shapes.attributes.ColorAttributes" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/attributes/ColorAttributes.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="268" width="281" x="925" y="1290"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="14" language="java" name="graphics.shapes.attributes.SelectionAttributes" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/attributes/SelectionAttributes.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="286" width="160" x="1725" y="1290"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="graphics.shapes.ui.ShapesController" project="SOOP" 
+  <class id="5" language="java" name="graphics.shapes.ui.ShapesController" project="SOOP" 
     file="/SOOP/src/graphics/shapes/ui/ShapesController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="448" width="281" x="797" y="-66"/>    
+    <position height="-1" width="-1" x="889" y="220"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="graphics.shapes.Shape" project="SOOP" file="/SOOP/src/graphics/shapes/Shape.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1437" y="541"/>    
+  <class id="6" language="java" name="graphics.shapes.ui.Grid" project="SOOP" 
+    file="/SOOP/src/graphics/shapes/ui/Grid.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="517" y="938"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="graphics.shapes.SRectangle" project="SOOP" 
-    file="/SOOP/src/graphics/shapes/SRectangle.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="232" width="173" x="1955" y="838"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="18" language="java" name="graphics.shapes.ui.ShapeDraftman" project="SOOP" 
+  <class id="7" language="java" name="graphics.shapes.ui.ShapeDraftman" project="SOOP" 
     file="/SOOP/src/graphics/shapes/ui/ShapeDraftman.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="268" width="207" x="850" y="838"/>    
+    <position height="-1" width="-1" x="860" y="955"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="graphics.ui.Controller" project="SOOP" 
+  <class id="8" language="java" name="graphics.ui.Controller" project="SOOP" 
     file="/SOOP/src/graphics/ui/Controller.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="368" y="658"/>    
+    <position height="-1" width="-1" x="151" y="157"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="20">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="21" name="hmap"/>      
-      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
+  <association id="9">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="10" name="scontroller"/>      
+      <multiplicity id="11" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="23">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="24">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="25" name="sview"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+  <association id="12">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="13" name="grid"/>      
+      <multiplicity id="14" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <association id="28">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="29" name="sview"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="31">    
-    <bendpoint x="1106" y="422"/>    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="32" name="model"/>      
-      <multiplicity id="33" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="34">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="35">    
-    <bendpoint x="1256" y="422"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="36" name="model"/>      
-      <multiplicity id="37" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="38">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="39" name="sd"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="42" name="sview"/>      
-      <multiplicity id="43" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="44">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="45" name="view"/>      
-      <multiplicity id="46" minimum="0" maximum="1"/>    
+  <association id="15">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="16" name="sview"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="47">    
+  <association id="18">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="19" name="view"/>      
+      <multiplicity id="20" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="48" name="controller"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
+      <attribute id="22" name="sd"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="50">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <association id="51">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="52" name="model"/>      
-      <multiplicity id="53" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="54">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="55" name="shapes"/>      
-      <multiplicity id="56" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="57">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="58" name="scontroller"/>      
-      <multiplicity id="59" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="60">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <generalization id="61">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="62">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="63" name="grid"/>      
-      <multiplicity id="64" minimum="0" maximum="1"/>    
+  <association id="24">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="25" name="controller"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="65">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="16"/>  
+  <association id="27">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="28" name="sview"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
   </generalization>  
-  <association id="66">    
-    <bendpoint x="1127" y="422"/>    
+  <association id="31">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="67" name="model"/>      
-      <multiplicity id="68" minimum="0" maximum="1"/>    
+      <attribute id="32" name="sview"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="69">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="70">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <association id="71">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="72" name="DEFAULTCOLORATTRIBUTES"/>      
-      <multiplicity id="73" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="74">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="75" name="arr"/>      
-      <multiplicity id="76" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="77">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

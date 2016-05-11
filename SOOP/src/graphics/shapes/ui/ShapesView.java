@@ -23,7 +23,7 @@ public class ShapesView extends View
 		this.addMouseListener(this.scontroller);
 		this.addMouseMotionListener(this.scontroller);
 		this.addKeyListener(this.scontroller);
-		this.addMouseWheelListener(this.scontroller);
+		//this.addMouseWheelListener(this.scontroller);
 		this.setFocusable(true);
 	}
 	
