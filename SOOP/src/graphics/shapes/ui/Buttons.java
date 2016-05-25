@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JLayeredPane;
 import javax.swing.JToggleButton;
@@ -48,6 +49,7 @@ public class Buttons extends JFrame
 	private ShapesView sview;
 	private JTextField textField;
 	private String txtSTR;
+	Random random = new Random();
 
 
 	public void affiche(SCollection model, ShapesView sview)
@@ -79,22 +81,42 @@ public class Buttons extends JFrame
 
 	public int getHeight()
 	{
-		return Integer.parseInt(this.height.getText());
+		String height = this.height.getText();
+		if(height == null)
+			return Integer.parseInt(height);
+		else {
+			return random.nextInt(150) + 50;
+		}
 	}
 
 	public int getWidth()
 	{
-		return Integer.parseInt(this.width.getText());
+		String width = this.width.getText();
+		if(width == null)
+			return Integer.parseInt(width);
+		else {
+			return random.nextInt(150) + 50;
+		}
 	}
 
 	public int getPositionX()
 	{
-		return Integer.parseInt(this.positionX.getText());
+		String position = this.positionX.getText();
+		if(position == null)
+			return Integer.parseInt(position);
+		else {
+			return random.nextInt(Grid.LIMITX);
+		}
 	}
 
 	public int getPositionY()
 	{
-		return Integer.parseInt(this.positionY.getText());
+		String position = this.positionY.getText();
+		if(position == null)
+			return Integer.parseInt(position);
+		else {
+			return random.nextInt(Grid.LIMITY);
+		}
 	}
 
 	private void initialize()
