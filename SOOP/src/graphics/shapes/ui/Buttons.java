@@ -81,41 +81,36 @@ public class Buttons extends JFrame
 
 	public int getHeight()
 	{
-		String height = this.height.getText();
-		if(height == null)
-			return Integer.parseInt(height);
-		else {
+		if(this.height.getText().isEmpty())
 			return random.nextInt(150) + 50;
+		else {
+			return Integer.parseInt(this.height.getText());
 		}
 	}
 
 	public int getWidth()
 	{
-		String width = this.width.getText();
-		if(width == null)
-			return Integer.parseInt(width);
-		else {
+		if(this.width.getText().isEmpty())
 			return random.nextInt(150) + 50;
+		else {
+			return Integer.parseInt(this.width.getText());
 		}
 	}
 
 	public int getPositionX()
 	{
-		String position = this.positionX.getText();
-		if(position == null)
-			return Integer.parseInt(position);
-		else {
+		if(this.positionX.getText().isEmpty())
 			return random.nextInt(Grid.LIMITX);
-		}
+		else
+			return Integer.parseInt(this.positionX.getText());
 	}
 
 	public int getPositionY()
 	{
-		String position = this.positionY.getText();
-		if(position == null)
-			return Integer.parseInt(position);
-		else {
+		if(this.positionY.getText().isEmpty())
 			return random.nextInt(Grid.LIMITY);
+		else {
+			return Integer.parseInt(this.positionY.getText());
 		}
 	}
 

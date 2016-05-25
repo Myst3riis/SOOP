@@ -6,8 +6,8 @@ import java.awt.Graphics;
 public class Grid
 {
 
-	public static final int LIMITX = 2000;
-	public static final int LIMITY = 2000;
+	static final int LIMITX = 2000;
+	static final int LIMITY = 2000;
 //	private int zoomValue = 100;
 	private int spacing = 20;
 	private Color color = new Color(232, 232, 232); // #A0AAAD
